@@ -1,0 +1,201 @@
+﻿@page "{Id:long}"
+@model SaysanPwa.Api.Pages.Products.DetailModel
+@{
+    ViewBag.Title = $"جزئیات محصول {Model.Product.Name_Kala}";
+    int row = 0;
+    int storeRow = 0;
+}
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                مشخصات تکمیلی
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+            <div class="accordion-body">
+                <div class="from-group m-1">
+                    <label><strong>گروه کالا: </strong> @Model.Product.Ful_Bach_Nam</label>
+                </div>
+                <div class="form-group m-1">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                            <label><strong>نام کالا: </strong>@Model.Product.Name_Kala</label>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                            <label><strong>کد کالا: </strong>@Model.Product.Code_Kala</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-1">
+                    <label><strong>شناسه مالیاتی: </strong>@Model.Product.Shenase_Kala</label>
+                </div>
+                <div class="form-group m-1">
+                    <label><strong>شرح مالیاتی: </strong>@Model.Product.Desc_Shenase_Kala</label>
+                </div>
+                <div class="form-group m-1">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>بارکد کالا (1): </strong>@Model.Product.BarCode_Kala</label>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>بارکد کالا (2): </strong>@Model.Product.BarCode_Kala2</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-1">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>بارکد کالا (3): </strong>@Model.Product.BarCode_Kala3</label>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>بارکد کالا (4): </strong>@Model.Product.BarCode_Kala4</label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group m-1">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>تاریخ ساخت: </strong>@Model.Product.D_S_Kala</label>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>تاریخ انقضا: </strong>@Model.Product.D_E_Kala</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-1">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>مکان ساخت: </strong>@Model.Product.Makan_Kala</label>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>شرکت سازنده: </strong>@Model.Product.Sazande_Kala</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-1">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>مدل: </strong>@Model.Product.Model_Kala</label>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <label><strong>توضیحات: </strong>@Model.Product.Descript_Kala</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-1">
+                    <label><strong>مشخصات فنی: </strong>@Model.Product.Fanni_Kala</label>
+                </div>
+                <div class="form-group m-1">
+                    <label><strong>محل قرار گیری کالا: </strong>@Model.Product.M_Grar_Kala</label>
+                </div>
+                <div class="form-group m-1">
+                    <label><strong>وزن کالا: </strong>@Model.Product.Vz_Kala</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                قیمت گذاری
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+            <div class="accordion-body">
+                <div class="form-group m-1">
+                    <label><strong>قیمت گذاری کالا: </strong>@Model.Product.Tp_G_F_Kala</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                واحد های کالا
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+            <div class="accordion-body">
+                <div class="form-gorup m-1">
+                    <label><strong>واحد اصلی کالا: </strong>@(Model.ProductCoefficients?.FirstOrDefault()?.MainUnit)</label>
+                </div>
+                <div class="m-2">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>واحد فرعی</th>
+                                <th>ضریب</th>
+                                <th>شرح</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.ProductCoefficients.Any())
+                            {
+                                @foreach (var coefficients in Model.ProductCoefficients)
+                                {
+                                    <tr>
+                                        <td>@(++row)</td>
+                                        <td>@coefficients.MinorUnit</td>
+                                        <td>@coefficients.Coefficients</td>
+                                        <td>@coefficients.CoefficientsDescription</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4">ضریبی برای این کالا ثبت نشده است.</td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                انبار های مرتبط
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+            <div class="accordion-body">
+                <div class="m-2">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ردیف</th>
+                                <th>نام</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Stores.Any())
+                            {
+                                foreach (var store in Model.Stores)
+                                {
+                                    <tr>
+                                        <td>@(++storeRow)</td>
+                                        <td>@store</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="2">انباری برای این محصول ثبت نشده است.</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

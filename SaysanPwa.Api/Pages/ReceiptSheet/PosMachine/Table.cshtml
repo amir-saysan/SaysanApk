@@ -1,0 +1,45 @@
+﻿@page "{SessionId}"
+@using System.Globalization;
+@model SaysanPwa.Api.Pages.ReceiptSheet.PosMachine.TableModel
+@{
+    Layout = "";
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>حساب بانک / کارتخوان</th>
+            <th>تاریخ</th>
+            <th>مبلغ</th>
+            <th>شماره پیگیری</th>
+            <th>سریال تراکنش</th>
+            <th>شرح</th>
+            <th>دستورات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (!Model.CardReaders.Any())
+        {
+            <tr>
+                <td colspan="7">دریافت کارتخوان ثبت نشده است.</td>
+            </tr>
+        }
+        else
+        {
+            foreach(var item in Model.CardReaders)
+            {
+                <tr>
+                    <td>@item.BankAccountId</td>
+                    <td>@DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa_IR"))</td>
+                    <td>@item.Price.ToString("N0")</td>
+                    <td>@item.IssueTracking</td>
+                    <td>@item.TransactionSeries</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <button class="btn btn-danger" type="button" onclick="DeleteReceiveFromPosMachine('@item.ItemId')">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

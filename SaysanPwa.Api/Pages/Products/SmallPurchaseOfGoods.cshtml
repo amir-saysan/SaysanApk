@@ -1,0 +1,124 @@
+﻿@page "/Products/SmallPurchaseOfGoods/{ProductId:long}/{ProductName}"
+@using SaysanPwa.Api.Pages.Products;
+@model SmallPurchaseOfGoodsModel
+@{
+    ViewBag.Title = $"ریز خرید کالا {Model.ProductName}";
+}
+
+<div class="card">
+    <div class="card-header">فیلتر ها</div>
+    <div class="card-body">
+        <form asp-page="/Products/SmallPurchaseOfGoods" method="get" id="page-form">
+            <input type="hidden" asp-for="CurrentPage"/>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <label>از تاریخ: </label>
+                    <input asp-for="From" class="form-control" data-jdp data-jdp-max-date="today" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <label>تا تاریخ: </label>
+                    <input asp-for="To" class="form-control" data-jdp data-jdp-max-date="today" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <br />
+                    <button type="submit" class="btn btn-success">جستجو</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@if (Model.PageResult.Result.Any())
+{
+    int rowNumber = 1;
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        
+        @foreach(var item in Model.PageResult.Result)
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@rowNumber')" type="button">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">شماره فاکتور: @item.N_F</div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">تاریخ فاکتور: @item.Dt_F</div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapse-@rowNumber" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>تعداد: <strong>@item.Tedad</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>فی: <strong>@item.Fi_Bed_Haz.ToString("N0")</strong></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>تخفیف: <strong>@item.M_T_Radf_K</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>مالیات / عوارض: <strong>@item.M_AV_Radf_K</strong></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>مبلغ نهایی: <strong>@item.M_Kol</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            rowNumber++;
+        }
+
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>اطلاعاتی برای این کالا ثبت نشده است</p>
+    </div>
+}
+
+
+<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+    <div class="w-full h-full d-flex" style="height: 100%; ">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                @for(int index = 0; index < Model.PageResult.PageInfo.TotalPage; index++)
+                {
+                    <button type="button" class="btn btn-outline-primary @(index == Model.PageResult.PageInfo.CurrentPage ? "active" : "")" onclick="changePage(@index)">@(index + 1)</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Script
+    {
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleDisplay(id) {
+            var div = document.getElementById(id);
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        }
+
+        function changePage(id)
+        {
+            $("#CurrentPage").val(id);
+            $("#page-form").submit();
+        }
+
+    </script>
+}

@@ -1,0 +1,125 @@
+﻿@page "/Partnership/PartnerCurrentChecks/{PartnerId:long}/{Name}"
+@model SaysanPwa.Api.Pages.Partnership.PartnerCurrentChecksModel
+@{
+    ViewBag.Title = $"چک های در جریان مشتری {Model.Name}";
+}
+
+<div class="card">
+    <div class="card-header">فیلتر ها</div>
+    <div class="card-body">
+        <form asp-page="/Partnership/PartnerUnclearedChecks" method="get" id="page-form">
+            <input type="hidden" asp-for="CurrentPage" />
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <label>از تاریخ: </label>
+                    <input asp-for="From" class="form-control" data-jdp data-jdp-max-date="today" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <label>تا تاریخ: </label>
+                    <input asp-for="To" class="form-control" data-jdp data-jdp-max-date="today" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <br />
+                    <button type="submit" class="btn btn-success" onclick="PostForm()">جستجو</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+
+    @if (Model.Result.Result.Any())
+    {
+        foreach (var item in Model.Result.Result)
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@item.ID_tbl_Daryaft_Chek')" type="button">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">شماره چک: @item.Shomare_Chek</div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">مبلغ چک: @item.Mablagh_Chek.ToString("N0")</div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapse-@item.ID_tbl_Daryaft_Chek" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>تاریخ دریافت: <strong>@item.Dt_D_Chek</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>تاریخ سررسید: <strong>@item.Dt_S_Chek</strong></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>بانک: <strong>@item.Name_Bank_Banch</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>شماره دریافت: <strong>@item.ID_tbl_DA</strong></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>نام طرفحساب: <strong>@item.Name_TarafHesab</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>شرح: <strong>@item.Desc_Chek</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-warning">چک در جریانی ثبت نشده است.</div>
+    }
+
+</div>
+
+
+<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+    <div class="w-full h-full d-flex" style="height: 100%; ">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                @for (int index = 0; index < Model.Result.PageInfo.TotalPage; index++)
+                {
+                    <button type="button" class="btn btn-outline-primary @(index == Model.Result.PageInfo.CurrentPage ? "active" : "")" onclick="changePage(@index)">@(index + 1)</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Script
+    {
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleDisplay(id) {
+            var div = document.getElementById(id);
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        }
+
+        function changePage(id) {
+            $("#CurrentPage").val(id);
+            $("#page-form").submit();
+        }
+
+        function PostForm() {
+            $("#CurrentPage").val(0);
+            $("#page-form").submit();
+        }
+    </script>
+}

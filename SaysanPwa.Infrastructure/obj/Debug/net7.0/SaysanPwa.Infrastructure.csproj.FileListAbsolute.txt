@@ -1,0 +1,142 @@
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+D:\vs\SaysaApk\Saysan\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+E:\mp\Agh\Agh\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\vs\SaysanApkHamed\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+D:\Saysan Ap\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+E:\mp\project\Saysan\Github4\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.deps.json
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.dll
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.dll
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Application.pdb
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.AssemblyReference.cache
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfoInputs.cache
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.AssemblyInfo.cs
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.csproj.CoreCompileInputs.cache
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPw.DD82DE9E.Up2Date
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
+E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll

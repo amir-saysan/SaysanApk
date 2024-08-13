@@ -1,0 +1,41 @@
+﻿@page "{SessionId}"
+@using System.Globalization;
+@model SaysanPwa.Api.Pages.ReceiptSheet.CashDesk.TableModel
+@{
+    Layout = "";
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>صندوق</th>
+            <th>تاریخ</th>
+            <th>مبلغ</th>
+            <th>توضیحات</th>
+            <th>دستورات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.CashDesks.Any())
+        {
+            @foreach (var item in Model.CashDesks)
+            {
+                <tr>
+                    <td>@item.CashDeskId</td>
+                    <td>@DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa_IR"))</td>
+                    <td>@item.Price.ToString("N0")</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="DeleteCashDesk('@item.ItemId')">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <th colspan="5">دریافت صندوق ثبت نشده است.</th>
+            </tr>
+        }
+    </tbody>
+</table>

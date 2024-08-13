@@ -1,0 +1,130 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Factor;
+@model SaysanPwa.Api.Pages.ServiceSaleFactor.IndexModel;
+@inject SaysanPwa.Domain.AggregateModels.UserAggregate.IUserRepository _Userrep;
+@using System.Security.Claims
+
+@{
+	ViewBag.Title = "لیست فاکتور فروش خدمت";
+	int userid = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+	var dRow_List = await _Userrep.GetUserPermission("itmApk_ShowAll_ListFactors", userid);
+	var dRow_Insert = await _Userrep.GetUserPermission("itmApk_InsertForoshKhedmat", userid);
+}
+
+@{
+	if (dRow_List)
+	{
+		<div class="card">
+			<div class="card-header">فیلتر ها</div>
+			<div class="card-body">
+				<form asp-page="/ServiceSaleFactor/Index" method="get" id="page-form">
+					<input type="hidden" asp-for="CurrentPage" />
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+							<label>از تاریخ: </label>
+							<input class="form-control" asp-for="From" data-jdp data-jdp-max-date="today" />
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+							<label>تا تاریخ: </label>
+							<input class="form-control" asp-for="To" data-jdp data-jdp-max-date="today" />
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+							<br />
+							<button type="submit" class="btn btn-success" onclick="PostDateFactor()">جستجو</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	}
+}
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+	@foreach (GetServiceSaleFactorDto p in Model.PageResult.Result)
+	{
+
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.N_FF_KHed')" type="button">
+					شماره فاکتور : @p.N_FF_KHed- طرف حساب  : @p.Name_TarafHesab
+				</button>
+			</h2>
+			<div id="panelsStayOpen-collapse-@p.N_FF_KHed" class="accordion-collapse collapse">
+				<div class="accordion-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr><th>شماره فاکتور : </th><td>@p.N_FF_KHed</td></tr>
+							<tr><th>تاریخ : </th><td>@p.Dt_FF_KHed</td></tr>
+							<tr><th>مبلغ: </th><td>@p.J_FF_KHed.ToString("n0")</td></tr>
+							<tr><th>جمع تخفیفات  : </th><td>@p.Tkh_A_FF_KHed.ToString("n0")</td></tr>
+							<tr><th> مالیات و عوارض  : </th><td>@p.JM_FF_KHed.ToString("n0")</td></tr>
+							<tr><th> شرح   : </th><td>@p.Dc_FF_KHed</td></tr>
+						</tbody>
+					</table>
+
+					<div class="btn-group dropend">
+						<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							...
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" asp-page="/ServiceSaleFactor/ServiceSaleFactorEdit" asp-route-Id="@p.ID_tbl_FF_KHed">ویرایش</a></li>
+							<li><a class="dropdown-item" asp-page="/ServiceSaleFactor/Print" asp-route-FactorId="@p.ID_tbl_FF_KHed" asp-route-Id="@p.N_FF_KHed">چاپ</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	}
+</div>
+
+@{
+	if (dRow_Insert)
+	{
+		<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+			<div class="w-full d-flex justify-content-center" style="height: 100%; align-items: center;">
+
+				<a class="btn btn-success" style="height: 60%; width:80%;" asp-page="/ServiceSaleFactor/AddFactor">فاکتور فروش خدمت جدید</a>
+
+			</div>
+		</div>
+	}
+}
+@*
+<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+    <div class="w-full h-full d-flex" style="height: 100%; ">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                <form method="get" asp-page="/Products/Index" id="page-form">
+                    <input type="hidden" value="@Model.CurrentPage" name="CurrentPage" id="CurrentPage" />
+                </form>
+                @for (int index = 0; index < Model.PageResult.PageInfo.TotalPage; index++)
+                {
+                    <button type="button" class="btn btn-outline-primary @(index == Model.PageResult.PageInfo.CurrentPage ? "active" : "")" onclick="changePage(@index)">@(index + 1)</button>
+                }
+            </div>
+        </div>
+    </div>
+</div> *@
+
+@section Script
+{
+	<script src="/lib/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function toggleDisplay(id) {
+			var div = document.getElementById(id);
+			if (div.style.display !== 'none') {
+				div.style.display = 'none';
+			} else {
+				div.style.display = 'block';
+			}
+		}
+
+		function PostDateFactor(id) {
+			$("#CurrentPage").val(id);
+			$("#page-form").submit();
+		}
+	</script>
+}

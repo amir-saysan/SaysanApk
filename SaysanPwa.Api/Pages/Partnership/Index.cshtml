@@ -1,0 +1,223 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Partner;
+@using SaysanPwa.Domain.AggregateModels.PartnerAggregate
+@model SaysanPwa.Api.Pages.Partnership.IndexModel
+@inject SaysanPwa.Domain.AggregateModels.UserAggregate.IUserRepository _Userrep;
+@using System.Security.Claims
+
+@{
+	ViewBag.Title = "لیست طرف حساب ها";
+	int userid = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+	var dRow = await _Userrep.GetUserPermission("itmApk_DefineTarafhesab", userid);
+}
+
+<div class="card">
+	<div class="card-header">
+		<h2>فیلتر ها</h2>
+	</div>
+	<div class="card-body">
+		<form method="get" asp-page="/Partnership/Index" id="page-form">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-8 col-12">
+					<lable>عنوان: </lable>
+					<input asp-for="CurrentPage" value="@Model.CurrentPage" type="hidden" />
+					<input asp-for="Query" class="form-control" placeholder="جستجو بر اساس نام طرفحساب، کد، کد ملی، کد اقتصادی" list="data-list" />
+					<datalist id="data-list">
+						@foreach (var item in Model.Result.Result)
+						{
+							<option value="@($"{item.Name_TarafHesab} {item.Code_TarafHesab} {item.CodeMelli_TarafHesab} {item.CodeEgtesad_TarafHesab}")" />
+						}
+					</datalist>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-8 col-12">
+					<br />
+					<button type="button" onclick="PostForm()" class="btn btn-success">جستجو</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div id="map-container" disabled>
+	<h3 style="color: maroon">
+		<strong>آدرس طرف حساب بر روی نقشه</strong>
+		<span>
+			<button class="btn btn-danger" onclick="$('#map-container').fadeOut('slow');">X</button>
+		</span>
+	</h3>
+
+	<div id="map"></div>
+</div>
+
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample" style="$display-font-weight: 300;">
+	@foreach (PartnerDetailViewModel p in @Model.Result.Result)
+	{
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.Code_TarafHesab')" type="button">
+					نام طرفحساب: @p.Name_TarafHesab  <span style="margin-right:20px">کد طرفحساب: @p.Code_TarafHesab</span>
+				</button>
+			</h2>
+			<div id="panelsStayOpen-collapse-@p.Code_TarafHesab" class="accordion-collapse collapse">
+				<div class="accordion-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr><th>گروه طرفحساب: </th><td>@p.Name_Group</td></tr>
+						</tbody>
+					</table>
+					@{
+						if (dRow)
+						{
+							<div class="btn-group dropend">
+								<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+									...
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" asp-page="/partnership/edit" asp-route-id="@p.ID_tbl_TarafHesab">ویرایش</a></li>
+									@if (!string.IsNullOrEmpty(p.Location_TarafHesab))
+									{
+										string[] latlng = p.Location_TarafHesab.Split(",");
+										float lat = 0;
+										float lng = 0;
+										if (latlng.Length == 1)
+											lat = float.Parse(latlng[0]);
+										if (latlng.Length > 1)
+											lng = float.Parse(latlng[1]);
+										<li><button class="dropdown-item" type="button" onclick="openMasterMap(@lat, @lng)">مشاهده روی نقشه</button></li>
+									}
+									else
+									{
+										<li><button class="dropdown-item" type="button" onclick="openMasterMap(0, 0)">مشاهده روی نقشه</button></li>
+									}
+									<li><a class="dropdown-item" asp-page="/partnership/PartnerFactors" asp-route-PartnerId="@p.ID_tbl_TarafHesab" asp-route-Name="@p.Name_TarafHesab.Replace(" ", "-")">n فاکتور آخر</a></li>
+									<li><a class="dropdown-item" href="#">ریز صورت حساب مشتری</a></li>
+									<li><a class="dropdown-item" asp-page="/Partnership/PartnerPassedChecks" asp-route-PartnerId="@p.ID_tbl_TarafHesab" asp-route-Name="@p.Name_TarafHesab.Replace(" ", "-")">چک های پاس شده</a></li>
+									<li><a class="dropdown-item" asp-page="/Partnership/PartnerUnclearedChecks" asp-route-PartnerId="@p.ID_tbl_TarafHesab" asp-route-Name="@p.Name_TarafHesab.Replace(" ", "-")">چک های پاس نشده</a></li>
+									<li><a class="dropdown-item" asp-page="/Partnership/PartnerReturnedChecks" asp-route-PartnerId="@p.ID_tbl_TarafHesab" asp-route-Name="@p.Name_TarafHesab.Replace(" ", "-")">چک های برگشتی</a></li>
+									<li><a class="dropdown-item" asp-page="/Partnership/PartnerCurrentChecks" asp-route-PartnerId="@p.ID_tbl_TarafHesab" asp-route-Name="@p.Name_TarafHesab.Replace(" ", "-")">چک های در جریان</a></li>
+									<li><a class="dropdown-item" href="#">چک های برداختی به مشتری</a></li>
+									<li><a class="dropdown-item" href="#">ریز دریافت</a></li>
+									<li><a class="dropdown-item" href="#">ریز پرداخت</a></li>
+									<li><a class="dropdown-item" asp-page="/Partnership/ConsolidationOfSalesOfGoodsToCustomers" asp-route-Name="@p.Name_TarafHesab.Replace(" ", "-")" asp-route-PartnerId="@p.ID_tbl_TarafHesab">تجمیع فروش کالا به مشتری</a></li>
+									<li><a class="dropdown-item" href="#">سود با مشتری</a></li>
+								</ul>
+							</div>
+						}
+					}
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
+
+@for (int index = 0; index < Model.Result.PageInfo.TotalPage; index++)
+{
+	<button type="button" class="btn btn-outline-primary @(index == Model.Result.PageInfo.CurrentPage ? "active" : "")" onclick="changePage(@index)">@(index + 1)</button>
+}
+
+@{
+	if (dRow)
+	{
+		<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+			<div class="w-full d-flex justify-content-center" style="height: 100%; align-items: center;">
+				<a class="btn btn-success" style="height: 60%; width:80%; " asp-page="/partnership/create">طرفحساب جدید</a>
+			</div>
+		</div>
+	}
+}
+
+@section Script
+{
+	<script src="/lib/js/bootstrap.bundle.min.js"></script>
+	<script>
+
+		const map = new L.Map("map", {
+			key: "web.b6257f3b40df46b69ee962222be7a46a",
+			maptype: "neshan",
+			poi: true,
+			traffic: false,
+			center: [35.701021, 51.390755],
+			zoom: 16,
+		}).locate({ setView: true, maxZoom: 16 });
+
+		$("#map-container").fadeOut("slow");
+
+		function addMarker(lat, lng) {
+			if (lat != 0 && lng != 0) {
+				var icon = new L.Icon.Default();
+				icon.options.shadowSize = [0, 0];
+				var marker = new L.Marker([lat, lng], { icon: icon }).addTo(map);
+			}
+		}
+
+		function removeMarkers() {
+			$(".leaflet-marker-icon").remove();
+		}
+
+
+		function openMasterMap(lat, lng) {
+
+			$("#map-container").fadeIn("slow");
+			$('html, body').animate({ scrollTop: $('#map-container').offset().top }, 'slow');
+
+			removeMarkers();
+
+			if (lat != 0 && lng != 0) {
+				addMarker(lat, lng);
+			}
+		}
+
+		var latitude = 0;
+		var longtitude = 0;
+
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				latitude = position.coords.latitude;
+				longtitude = position.coords.longitude;
+
+				//if ($("#CreatePartnerModel_Location_TarafHesab").val() == "") {
+				//    SetMasterLocation(latitude, longtitude);
+				//}
+
+				//if ($("#BranchLocation").val() == "") {
+				//    SetBranchLocation(latitude, longtitude);
+				//}
+
+				L.circle([latitude, longtitude], {
+					color: 'white',
+					fillColor: '#0099ff',
+					fillOpacity: 0.4,
+					radius: 30
+				}).addTo(map);
+
+			});
+		}
+		else {
+			alert("محل جغرافیایی در این مرورگر پشتیبانی نمیشود");
+		}
+
+
+		function toggleDisplay(id) {
+			var div = document.getElementById(id);
+			if (div.style.display !== 'none') {
+				div.style.display = 'none';
+			} else {
+				div.style.display = 'block';
+			}
+		}
+
+
+		function changePage(id) {
+			$("#CurrentPage").val(id);
+			$("#page-form").submit();
+		}
+
+		function PostForm() {
+			$("#CurrentPage").val(0);
+			$("#page-form").submit();
+		}
+	</script>
+}

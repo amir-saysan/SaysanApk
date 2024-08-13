@@ -1,0 +1,34 @@
+﻿@page "{SessionId}"
+@model SaysanPwa.Api.Pages.ReceiptSheet.Remittances.AddRemittanceModel
+@{
+    Layout = "";
+}
+
+<form method="post" id="AddRemittance-Form">
+    <div class="form-group">
+        <label>حساب بانکی: </label>
+        <select class="form-control" asp-for="RemmitanceInput.BankAccountId">
+            <option value="-1">لطفا یک حساب بانکی را انتخاب نمایید.</option>
+            @foreach(var item in Model.BackAccount)
+            {
+                <option value="@item.Key">@item.Value</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>مبلغ: </label>
+        <input asp-for="RemmitanceInput.Price" class="form-control" value="0" />
+    </div>
+    <div class="form-group">
+        <label>شماره حواله: </label>
+        <input asp-for="RemmitanceInput.RemittanceNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>شرح: </label>
+        <textarea class="form-control" asp-for="RemmitanceInput.Description">
+
+        </textarea>
+    </div>
+
+    <button class="btn btn-success" onclick="SubmitRemittanceForm()">ثبت دریافت از حواله</button>
+</form>

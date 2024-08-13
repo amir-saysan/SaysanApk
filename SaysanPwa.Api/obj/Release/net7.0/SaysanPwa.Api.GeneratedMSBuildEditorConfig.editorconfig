@@ -1,0 +1,195 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SaysanPwa.Api
+build_property.RootNamespace = SaysanPwa.Api
+build_property.ProjectDir = D:\vs\SaysaApk\Saysan\SaysanPwa.Api\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\vs\SaysaApk\Saysan\SaysanPwa.Api
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Factor/AddPreFactor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjdG9yXEFkZFByZUZhY3Rvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Factor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFjdG9yXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Jobs/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSm9ic1xpbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Logout/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/ConsolidationOfSalesOfGoodsToCustomers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcQ29uc29saWRhdGlvbk9mU2FsZXNPZkdvb2RzVG9DdXN0b21lcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/PartnerCurrentChecks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcUGFydG5lckN1cnJlbnRDaGVja3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/PartnerFactors.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcUGFydG5lckZhY3RvcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/PartnerPassedChecks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcUGFydG5lclBhc3NlZENoZWNrcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/PartnerReturnedChecks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcUGFydG5lclJldHVybmVkQ2hlY2tzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Partnership/PartnerUnclearedChecks.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFydG5lcnNoaXBcUGFydG5lclVuY2xlYXJlZENoZWNrcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Products/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Products/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Products/ProfitWithGoods.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUHJvZml0V2l0aEdvb2RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Products/RetailSaleOfGoods.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcUmV0YWlsU2FsZU9mR29vZHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Products/SmallPurchaseAndSaleOfGoods.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcU21hbGxQdXJjaGFzZUFuZFNhbGVPZkdvb2RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Products/SmallPurchaseOfGoods.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdHNcU21hbGxQdXJjaGFzZU9mR29vZHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/CashDesk/CashDeskForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XENhc2hEZXNrXENhc2hEZXNrRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/CashDesk/DeleteCashDesk.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XENhc2hEZXNrXERlbGV0ZUNhc2hEZXNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/CashDesk/Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XENhc2hEZXNrXFRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Check/AddCheck.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XENoZWNrXEFkZENoZWNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Check/DeleteCheck.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XENoZWNrXERlbGV0ZUNoZWNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Check/Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XENoZWNrXFRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/PosMachine/AddPosReceive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XFBvc01hY2hpbmVcQWRkUG9zUmVjZWl2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/PosMachine/DeletePos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XFBvc01hY2hpbmVcRGVsZXRlUG9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/PosMachine/Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XFBvc01hY2hpbmVcVGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Remittances/AddRemittance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XFJlbWl0dGFuY2VzXEFkZFJlbWl0dGFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Remittances/DeleteRemmitance.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XFJlbWl0dGFuY2VzXERlbGV0ZVJlbW1pdGFuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ReceiptSheet/Remittances/Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjZWlwdFNoZWV0XFJlbWl0dGFuY2VzXFRhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/SalesFactor/AddFactor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsZXNGYWN0b3JcQWRkRmFjdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/SalesFactor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsZXNGYWN0b3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ServiceSaleFactor/AddFactor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmljZVNhbGVGYWN0b3JcQWRkRmFjdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/ServiceSaleFactor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmljZVNhbGVGYWN0b3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/VisitPath/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlzaXRQYXRoXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/vs/SaysaApk/Saysan/SaysanPwa.Api/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

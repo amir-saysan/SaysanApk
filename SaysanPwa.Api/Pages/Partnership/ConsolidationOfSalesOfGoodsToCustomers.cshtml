@@ -1,0 +1,93 @@
+﻿@page "/Partnership/ConsolidationOfSalesOfGoodsToCustomers/{Name}/{PartnerId:int}"
+@model SaysanPwa.Api.Pages.Partnership.ConsolidationOfSalesOfGoodsToCustomersModel
+@{
+    ViewBag.Title = $"تجمیع فروش کالا به مشتری {Model.Name}";
+}
+
+
+@if(Model.Data.Any())
+{
+    <div class="card">
+        <div class="card-header">فیلتر ها</div>
+        <div class="card-body">
+            <form asp-page="/Partnership/ConsolidationOfSalesOfGoodsToCustomers" method="get">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <label>از تاریخ: </label>
+                        <input class="form-control" asp-for="FromDate" data-jdp data-jdp-max-date="today" />
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <label>تا تاریخ: </label>
+                        <input class="form-control" asp-for="ToDate" data-jdp data-jdp-max-date="today" />
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <br />
+                        <button type="submit" class="btn btn-success">جستجو</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+
+        @foreach (var item in Model.Data.DistinctBy(x => x.Code_Kala))
+        {
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@item.Code_Kala')" type="button">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">نام کالا: @item.Name_Kala</div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">کد کالا: @item.Code_Kala</div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapse-@item.Code_Kala" class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>جمع تعداد: <strong>@item.Tedad</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>جمع مبلغ کل: <strong>@item.M_Kol</strong></label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>جمع مبلغ نا خالص: <strong>@item.M_KHLS</strong></label>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                        <label>جمع مالیات: <strong>@item.M_AV_Radf_K</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        هیچ کالایی برای این طرف حساب ثبت نشده است
+    </div>
+}
+
+
+@section Script
+    {
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleDisplay(id) {
+            var div = document.getElementById(id);
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        }
+    </script>
+}

@@ -1,0 +1,202 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Factor;
+@using SaysanPwa.Application;
+@model SaysanPwa.Api.Pages.SalesFactor.PrintModel
+@{
+    ViewBag.Title = "فاکتور فروش";
+    Layout = null;
+    int RowCount = 1;
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/lib/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="/css/font.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @@page {
+            size: A4;
+            margin: 0;
+        }
+
+        html,
+        body {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "vazir";
+            font-size: 12px;
+        }
+
+        .content {
+            width: 90%;
+            height: 90%;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
+
+        .section-title {
+            background-color: #eaeaea;
+            border: 1px solid;
+            padding: 8px 8px;
+            border-radius: 2px;
+        }
+
+        .logo-img {
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h5><b> @ViewBag.Title </b></h5>
+            </div>
+            <div class="col-4 align-self-center">
+                <img src="~/images/logo-black.png" class="logo-img" />
+            </div>
+            <div class="col-4">
+                @* khali *@
+            </div>
+            <div class="col-4 align-self-center">
+                <div>
+                    <b> تاریخ فاکتور: </b><span> @ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().Dt_F) </span>
+                </div>
+                <div>
+                    <b> شماره فاکتور: </b><span>  @ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().N_F.ToString()) </span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-12 p-0">
+                <h5 class="section-title">مشخصات فروشنده</h5>
+            </div>
+            <div class="col-6">
+                <div>
+                    <b> نام حقیقی / حقوقی: </b><span> شرکت 1 </span>
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <b> تلفن: </b><span> @ConvertEnglishToPersian.GetEnglishNumber("09149284528") </span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 p-0">
+                <h5 class="section-title">مشخصات خریدار</h5>
+            </div>
+            <div class="col-6">
+                <div>
+                    <b> نام حقیقی / حقوقی: </b><span> @Model.PageResult.Result.FirstOrDefault().Name_TarafHesab </span>
+                </div>
+            </div>
+            <div class="col-6">
+                <div>
+                    <b> تلفن: </b><span> @ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().ChelPhone_TarafHesab) </span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ردیف</th>
+                        <th>کد کالا</th>
+                        <th>نام کالا</th>
+                        <th>تعداد</th>
+                        <th>فی</th>
+                        <th>مبلغ خالص</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var item in Model.PageResult.Result)
+                    {
+                        <tr>
+                            <td>@ConvertEnglishToPersian.GetEnglishNumber(RowCount.ToString())</td>
+                            <td>@ConvertEnglishToPersian.GetEnglishNumber(item.Code_Kala.ToString())</td>
+                            <td>@item.Name_Kala</td>
+                            <td>@ConvertEnglishToPersian.GetEnglishNumber(item.Tedad.ToString("n0"))</td>
+                            <td>@ConvertEnglishToPersian.GetEnglishNumber(item.Fi.ToString("n0"))</td>
+                            <td>@ConvertEnglishToPersian.GetEnglishNumber(item.Mablagh.ToString("n0"))</td>
+                        </tr>
+                        RowCount++;
+                    }
+                    <tr>
+                        <td colspan="3" style="border-bottom-style: hidden;">
+                            <b> بازاریاب: </b> <span> @Model.PageResult.Result.FirstOrDefault().Name_Bzy</span>
+                        </td>
+                        <td>@ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().J_Tedad_Asl_F.ToString("n0"))</td>
+                        <td><b> هزینه های فاکتور </b></td>
+                        <td>@ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().J_Hz_F.ToString("n0"))</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="border-bottom-style: hidden;"></td>
+                        <td><b> جمع تخفیفات </b></td>
+                        <td>@ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().Tkh_A_F.ToString("n0"))</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="border-bottom-style: hidden;"></td>
+                        <td><b> جمع مالیات: </b></td>
+                        <td><span>@ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().JM_F.ToString("n0"))</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="border-bottom-style: hidden;"></td>
+                        <td><b> جمع فاکتور: </b></td>
+                        <td><span>@ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().J_F.ToString("n0"))</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td><b> باقیمانده فاکتور: </b></td>
+                        <td>@ConvertEnglishToPersian.GetEnglishNumber(Model.PageResult.Result.FirstOrDefault().BG_F.ToString("n0"))</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <b> شرح فاکتور:  @Model.PageResult.Result.FirstOrDefault().Dc_F</b>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 text-center">
+                <b> مهر و امضاء فروشنده </b>
+            </div>
+            <div class="col-6 text-center">
+                <b> مهر و امضاء خریدار </b>
+            </div>
+        </div>
+    </div>
+
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            window.print();
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+

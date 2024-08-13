@@ -1,0 +1,134 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Partner;
+@model SaysanPwa.Api.Pages.Partnership.DetailModel
+@{
+    PartnerDetailDto partner = Model.Partner;
+}
+
+
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+        <h2>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                اطلاعات پایه
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+            <div class="accordion-body row">
+                <div class="col-sm-6">
+                    <label for="name"><b>نام / عنوان تجاری : </b></label>
+                    <input class="form-control" type="text" placeholder="نام / عنوان تجاری">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="personality"><b>نوع شخصیت : </b></label>
+                    <select class="form-control">
+                        <option>حقیقی</option>
+                        <option>حقوقی</option>
+                    </select>       
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="group"><b>گروه : </b></label>
+                    <select class="form-control">
+                        <option>Default select</option>
+                    </select>
+                </div>
+                
+                <div class="col-sm-6">
+                    <label for="group"><b>شغل : </b></label>
+                    <input class="form-control" type="text" placeholder="شغل">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nationalid"><b>شناسه ملی : </b></label>
+                    <input class="form-control" type="number" placeholder="شناسه ملی">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="EcoNumber"><b>کد اقتصادی : </b></label>
+                    <input class="form-control" type="number" placeholder="کد اقتضادی">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="partnerCode"><b>کد طرف حساب : </b></label>
+                    <input class="form-control" type="number" placeholder="کد طرفحساب">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="birthDate"><b>تاریخ تولد : </b></label>
+                    <input class="form-control" type="number" placeholder="کد طرفحساب">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="marriageDate"><b>تاریخ ازدواج : </b></label>
+                    <input class="form-control" type="number" placeholder="کد طرفحساب">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                آدرس
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+            <div class="accordion-body row">
+                @* not completed *@
+                <div class="col-sm-6">
+                    <label for="region"><b>استان : </b></label>
+                    <span id="region">آذربایجان</span>
+                </div>
+
+                @* not completed *@
+                <div class="col-sm-6">
+                    <label for="city"><b>شهر : </b></label>
+                    <span id="city">تبریز</span>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="addressDetail"><b>آدرس : </b></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="آدرس"></textarea>
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="postalCode"><b>کد پستی : </b></label>
+                    <input class="form-control" type="number" placeholder="کد پستی">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="tel"><b>تلفن : </b></label>
+                    <input class="form-control" type="number" placeholder="تلفن">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2>
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                اعتبار
+            </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+            <div class="accordion-body row">
+
+                <div class="col-sm-6">
+                    <label for="tel"><b>سقف اعتبار اسنادی : </b></label>
+                    <input class="form-control" type="number" placeholder="سقف اعتبار اسنادی">
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="tel"><b>سقف اعتبار نقدی : </b></label>
+                    <input class="form-control" type="number" placeholder="سقف اعتبار نقدی">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,1029 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Factor
+@using SaysanPwa.Application.DTOs.Product
+@using SaysanPwa.Domain.AggregateModels.Factor;
+@inject IConfiguration configuration
+@model SaysanPwa.Api.Pages.ServiceSaleFactor.AddFactorModel
+@inject SaysanPwa.Domain.AggregateModels.UserAggregate.IUserRepository _Userrep;
+@using System.Security.Claims
+
+
+@{
+	ViewBag.Title = "افرودن فاکتور فروش خدمت";
+	string active = "active";
+	string host = HttpContext.Request.Scheme + "://" + HttpContext.Request.Host.Value;
+	bool specificPartner = Model.Partners.Count == 1;
+	int userid = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+	var dRow = await _Userrep.GetUserPermission("itmApk_AlterPorsantMoj", userid);
+}
+
+<div class="card">
+	<div class="card-header">
+		انتخاب طرف حساب
+	</div>
+	<div class="card-body">
+		<div class="col-sm-12">
+
+			@* if else is being used here if we recievid partner id in query or not *@
+			<label for="searchPartner">مشتری :</label>
+
+			@if (specificPartner)
+			{
+				<input type="text" name="search" id="searchPartner" class="form-control" autocomplete="off" value="@Model.Partners[0].Name_TarafHesab" disabled />
+				<input type="hidden" id="partnerId" value="@Model.Partners[0].ID_tbl_TarafHesab" />
+			}
+			else
+			{
+				<input type="text" name="search" id="searchPartner" placeholder="جستجوی طرفحساب" class="form-control" autocomplete="off" />
+				<input type="hidden" id="partnerId" value="" />
+			}
+			<ul class="list-group" id="result"></ul>
+
+			@* <input type="hidden" id="partnerBranchId" value="" /> *@
+
+
+		</div>
+		<div class="col-sm-12">
+			<label for="partnerBranch">شعبه مشتری :</label>
+			@* <input id="partnerBranch" class="form-control col-12" disabled autocomplete="off" /> *@
+			<select id="partnerBranch" class="form-control col-12" autocomplete="off">
+			</select>
+		</div>
+	</div>
+</div>
+
+@if (TempData["Status"] != null)
+{
+	<div class="alert alert-info">
+		@((string)TempData["Status"]!)
+	</div>
+}
+
+
+<div id="main-panel" style="display:none">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item" role="presentation">
+			<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#factorItems" type="button" role="tab" aria-controls="home" aria-selected="true">اقلام فاکتور</button>
+		</li>
+		<li class="nav-item" role="presentation">
+			<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#factorDetails" type="button" role="tab" aria-controls="profile" aria-selected="false">اطلاعات تکمیلی فاکتور</button>
+		</li>
+
+	</ul>
+	<div class="tab-content" id="myTabContent">
+
+		<div class="tab-pane fade show active" id="factorItems" role="tabpanel" aria-labelledby="home-tab">
+			<div>
+				<div class="row">
+					<button type="button" id="addProduct" class="btn btn-primary col-2 m-2" data-bs-toggle="modal" data-bs-target="#addProductModal">
+						&#43;
+					</button>
+					<div class="table-responsive">
+
+						<table class="table table-bordered" style="white-space: nowrap;" width="100%">
+							<thead>
+								<tr>
+									<th>نام خدمت</th>
+									<th>تعداد</th>
+									<th>فی</th>
+									<th>فی با تخفیف</th>
+									<th>درصد مالیات</th>
+									<th>درصد عوارض</th>
+									<th>مبلغ نهایی ردیف فاکتور</th>
+									<th>عملیات</th>
+								</tr>
+							</thead>
+							<tbody id="factorItemsTableBody">
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="factorDetails" role="tabpanel" aria-labelledby="profile-tab">
+			<div>
+				<div class="row">
+
+					<div class="col-12">
+						<label for="factordetailtotal">مبلغ کل فاکتور :</label>
+						<input id="factordetailtotal" class="form-control col-12" disabled value="0" autocomplete="off" />
+					</div>
+					<div>
+						<label for="totalTax">مالیات کل فاکتور :</label>
+						<input id="totalTax" class="form-control col-12" disabled value="0" autocomplete="off" />
+					</div>
+					<div class="col-12">
+						<label for="itemsTotalDiscount">مبلغ تخفیف ردیف ها : </label>
+						<input id="itemsTotalDiscount" class="form-control col-12" value="0" max="99" min="0" autocomplete="off" disabled />
+					</div>
+					<div class="col-6">
+						<label for="discountPercentage">تخفیف % :</label>
+						<input type="number" inputmode="numeric" id="discountPercentage" class="form-control col-12" value="0" max="100" min="0" autocomplete="off" />
+					</div>
+					<div class="col-6">
+						<label for="discountAmount">مبلغ تخفیف : </label>
+						<input type="number" inputmode="numeric" id="discountAmount" class="form-control col-12" value="0" max="0" min="0" autocomplete="off" />
+					</div>
+					<div>
+						<label for="factorDetailFinalTotal">مبلغ نهایی :</label>
+						<input id="factorDetailFinalTotal" class="form-control col-12" disabled value="0" autocomplete="off" />
+					</div>
+					<div>
+						<label>شرح فاکتور: </label>
+						<textarea id="SaleFactor_Dc_F" class="form-control"></textarea>
+					</div>
+				</div>
+			</div>
+			<form method="post" asp-page="/ServiceSaleFactor/AddFactor" id="finalDetailsForm">
+				<div style="display:none">
+					<div id="factorItemsToPost">
+					</div>
+					<div id="factorDetailToPost">
+						<input name="SaleFactor.ID_tbl_TarafHesab" id="partnerIdToPost" />
+						<input name="SaleFactor.Tkh_N_FF_KHed" id="totalDiscountAmountToPost" />
+						<input name="SaleFactor.Tkh_A_FF_KHed" id="totalDiscountAmountWithItemsToPost" />
+						<input name="SaleFactor.JM_FF_KHed" id="totalTaxToPost" />
+						<input name="SaleFactor.JAv_FF_KHed" id="totalAvToPost" />
+						<input name="SaleFactor.J_FF_KHed" id="finalTotalToPost" />
+						<input name="SaleFactor.J_Tedad_Asli_FF_KHed" id="totalItemCount" />
+						<label>شرح فاکتور: </label>
+						<input name="SaleFactor.Dc_FF_KHed" type="hidden" id="saleFactorDescription" />
+					</div>
+				</div>
+				<br />
+				<div class="sticky-bottom">
+					<input class="btn btn-primary" value="ثبت" id="finalSubmit" disabled readonly />
+					<a class="btn btn-danger" asp-page="/ServiceSaleFactor/Index" asp-page-handler="OnGet">انصراف</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">افزودن خدمت</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+
+			<div class="modal-body" ">
+				<div id="carouselExample" class="carousel slide row" style="align-content:center;">
+
+					<button style="color:black; position: relative;" class="col-1" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+						<span aria-hidden="false">&#10094;</span>
+					</button>
+
+					<div id="productSlides" class="col-9" style="overflow-x: hidden; height: 70vh;">
+						<input type="text" name="search" id="searchProduct" placeholder="جستجوی خدمت" class="form-control" autocomplete="off" />
+						<input type="hidden" id="productId" value="" />
+						<ul class="list-group" id="productSearchResult"></ul>
+
+			@foreach (Services p in Model.Services!)
+			{
+							<div class="carousel-item @active" style="top:20px">
+								<div class="row align-items-center">
+									<div class="form-group row ">
+										<label for="" class="col-auto col-form-label">نام مجری :</label>
+										<select class="from-control col" id="agentName">
+											<option value="0">لطفا یک مجری را انتخاب کنید</option>
+								              @foreach (var item in Model.PartnerInServiceFactors)
+								              {
+								              	<option value="@item.ID_tbl_TarafHesab">@item.Name_TarafHesab</option>
+								              }
+										</select>
+						              	@{
+						              		if (dRow)
+						              		{
+						              			<div class="form-group row ">
+						              				<label for="Pors_Dr_Rdf" class="col-auto col-form-label">درصد پورسانت :</label>
+						              				<input id="Pors_Dr_Rdf" class="form-control col pors_Dr_Rdf" type="number" inputmode="numeric" min="0" max="9999999999999999" value="" autocomplete="off" />
+						              			</div>
+						              			<div class="form-group row ">
+						              				<label for="Pors_Mbg_Rdf" class="col-auto col-form-label">مبلغ پورسانت : </label>
+						              				<input id="Pors_Mbg_Rdf" class="form-control col pors_Mbg_Rdf" type="number" inputmode="numeric" min="0" max="9999999999999999" value="" autocomplete="off" />
+						              			</div>
+						              		}
+						              	}
+									</div>
+									<div class="form-group row ">
+										<label for="" class="col-auto col-form-label">نام خدمت :</label>
+										<input id="" class="form-control col itemName" value="@p.Name_Khedmat" disabled autocomplete="off" />
+									</div>
+									<div class="form-group row ">
+										<label for="" class="col-auto col-form-label">کد خدمت : </label>
+										<input id="" class="form-control col itemCode" value="@p.Cde_Khedmat" type="number" min="1" max="999999999999999" disabled autocomplete="off" />
+									</div>
+								</div>
+
+								<div class="row carousel-inputs">
+									<input type="hidden" class="itemId" value="@p.ID_tbl_Khedmat" />
+									<div class="form-group row">
+										<label for="countinput" class="col-auto col-form-label">تعداد :</label>
+										<input id="countinput" class="itemCount countinput form-control col" type="number" inputmode="numeric" min="0" max="999999999" value="" autocomplete="off" />
+									</div>
+
+									<div class="form-group row ">
+										<label for="feeinput" class="col-auto col-form-label">فی فروش :</label>
+										<input id="feeinput" type="number" min="1" max="99999999999999" class="itemFee feeinput form-control col" value="@Convert.ToDecimal(p.P_F_Khedmat)" disabled autocomplete="off" />
+									</div>
+									<div class="form-group row">
+										<label for="inputtotal" class="col-auto col-form-label">مبلغ کل :</label>
+										<input id="inputtotal" type="number" min="1" max="999999999999999" class="inputtotal form-control col" disabled value="0" autocomplete="off" />
+									</div>
+
+
+									<input type="hidden" id="" class="taxPercentageInput" value="@p.M_Khedmat" />
+									<input type="hidden" id="" class="D_Av_Kala" value="@p.A_Khedmat" />
+									<input type="hidden" id="" class="moafAzMaliatForoushInput" value="@((!p.IS_A_M_Khedmat).ToString())" />
+									<input type="hidden" id="" class="ID_tblVahede_Kala" value="@p.ID_tblVahede_Kala" />
+
+								</div>
+							</div>
+				active = "";
+			}
+					</div>
+					<button style="color:black; position: relative;" class="col-1" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+						<span class="" aria-hidden="false">&#10095;</span>
+					</button>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="addProductToFactor" type="button" class="btn btn-primary" data-bs-dismiss="modal" disabled readonly>ثبت</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="editModalLabel">ویرایش</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div id="editProductSlides" class="col-12" style="overflow:hidden;">
+					<div class="" style="">
+						<div class="row align-items-center">
+							<div class="form-group row ">
+								<label for="" class="col-auto col-form-label">نام خدمت :</label>
+								<input id="" class="form-control col itemName" value="" disabled autocomplete="off" />
+							</div>
+							<div class="form-group row ">
+								<label for="" class="col-auto col-form-label">کد خدمت : </label>
+								<input id="" min="1" max="99999999999" class="form-control col itemCode" value="" disabled autocomplete="off" />
+							</div>
+
+						</div>
+						<div class="row carousel-inputs">
+							<input type="hidden" class="itemId" value="" />
+							<div class="form-group row">
+								<label for="countinputEdit" class="col-auto col-form-label">تعداد :</label>
+								<input id="countinputEdit" class="itemCount form-control col" type="number" inputmode="numeric" min="1" max="1000000" value="" />
+							</div>
+							<div class="form-group row">
+								<label for="feeinputEdit" class="col-auto col-form-label">فی :</label>
+								<input id="feeinputEdit" type="number" min="1" max="99999999999999999999" class="itemFee form-control col" value="" disabled />
+							</div>
+							<div class="form-group row">
+								<label for="inputtotalEdit" class="col-auto col-form-label">مبلغ کل :</label>
+								<input id="inputtotalEdit" type="number" min="1" max="99999999999999999999" class="itemTotal form-control col" disabled value="0" />
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button id="editProductInFactor" type="button" class="btn btn-primary" data-bs-dismiss="modal" readonly>ثبت</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+			@section Script {
+
+	<script>
+
+		// ### Calculate Total in Modal Slider ###
+		$(".countinput").on("change", async () => {
+			var item = $("#productSlides").find(".active");
+			var id = $(item).find(".itemId").val();
+			var partnerId = $("#partnerIdToPost").val();
+
+			await $.getJSON(`@host/api/Factor/GetServiceCustomPricing/${id}/${partnerId}`, async function (result) {
+				console.log(result);
+				if (result.type_Price == 0 && result.price > 0) {
+					console.log("inside of if");
+					$(item).find(".itemFee").val(result.price);
+					$(item).find('.inputtotal').val($(item).find('.countinput').val() * result.price);
+				}
+				//if (result.type_Price == 1 && result.price > 0) {
+				//var fi_Ba_Haz = result.fi_Ba_Haz;
+
+				//var percentAmount = (fi_Ba_Haz * result.price) / 100;
+				//$(item).find(".itemFee").val(percentAmount + fi_Ba_Haz);
+				//$(item).find('.inputtotal').val($(item).find('.countinput').val() * $(item).find(".itemFee").val());
+				//}
+				else {
+					$(item).find('.inputtotal').val($(item).find('.countinput').val() * $(item).find(".itemFee").val());
+				}
+			});
+			if (!(($(item).find('.countinput').val() == '') || ($(item).find('.countinput').val() == 0))) {
+				$('#addProductToFactor').removeAttr("disabled");
+			} else {
+				$('#addProductToFactor').prop("disabled", true);
+			}
+
+			calculateFactor();
+		});
+
+		$(".pors_Dr_Rdf").on("change", function () {
+			var item = $("#productSlides").find(".active");
+			var totalAmount = $(item).find(".inputtotal").val();
+			if (totalAmount > 0) {
+				var prosMbgRdf = (totalAmount * $(item).find(".pors_Dr_Rdf").val()) / 100;
+				$(item).find(".pors_Mbg_Rdf").val(prosMbgRdf);
+			}
+			else {
+				$(item).find(".pors_Mbg_Rdf").val(0);
+				$(item).find(".pors_Dr_Rdf").val(0);
+			}
+		});
+
+		$(".pors_Mbg_Rdf").on("change", function () {
+			var item = $("#productSlides").find(".active");
+			var totalAmount = $(item).find(".inputtotal").val();
+			if (totalAmount > 0) {
+				var porsDrRdf = (100 * $(item).find(".pors_Mbg_Rdf").val()) / totalAmount;
+				$(item).find(".pors_Dr_Rdf").val(porsDrRdf);
+			}
+			else {
+				$(item).find(".pors_Mbg_Rdf").val(0);
+				$(item).find(".pors_Dr_Rdf").val(0);
+			}
+		});
+
+		$("#countinputEdit").on("change", async () => {
+
+			var item = $("#editProductSlides");
+			var id = $(item).find(".itemId").val();
+			var partnerId = $("#partnerIdToPost").val();
+			await $.getJSON(`@host/api/Factor/GetServiceCustomPricing/${id}/${partnerId}`, function (result) {
+				console.log(result);
+
+				if (result.type_Price == 0 && result.price > 0) {
+					$(item).find(".itemFee").val(result.price);
+					$(item).find('.itemTotal').val($(item).find('#countinputEdit').val() * result.price);
+				}
+				//if (result.type_Price == 1 && result.price>0) {
+				//    var fee = $(item).find(".itemFee").val();
+				//    var price = (fee * result.price) / 100;
+				//    $(item).find(".itemFee").val(price + fee);
+				//    $(item).find('.itemTotal').val($(item).find('#countinputEdit').val() * fee);
+				//}
+				else {
+					var fee = $(item).find(".itemFee").val().replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "");
+					$(item).find('.itemTotal').val($(item).find('#countinputEdit').val() * (+fee));
+					console.log(fee);
+					console.log($(item).find('.itemTotal').val());
+				}
+			});
+
+			calculateFactor();
+			//$('#inputtotalEdit').val($('#countinputEdit').val() * $('#feeinputEdit').val());
+		})
+
+		// Class Product to simplify mapping to backend, also handle delete and edit on front-end
+		class Product {
+			Id;
+			Name;
+			Count;
+			Fee;
+			Total;
+			TaxPercentage;
+			TaxAmount;
+			TotalAfterTax;
+			MoafAzMaliatForoush;
+			ID_tbl_Anbar;
+			ID_tblVahede_Kala;
+			DiscountPercentage;
+			DiscountAmount;
+			DiscountedFee;
+			TotalDiscounted;
+			TotalDiscountedWithTax;
+			D_Av_Kala;
+			AvarezAmount;
+			TotalAvarez;
+			AgentId;
+			Pors_Mbg_Rdf;
+			Pors_Dr_Rdf;
+
+			constructor(id, name, count, fee, taxPercentage, moafAzMaliatForoush, id_tbl_Anbar, id_tblVahede_Kala, discountPercentage, discountAmount, discountedFee, D_Av_Kala, agentId, pors_Dr_Rdf, pors_Mbg_Rdf) {
+				this.ID_tbl_Anbar = id_tbl_Anbar;
+				this.ID_tblVahede_Kala = id_tblVahede_Kala;
+				this.Id = +id;
+				this.Name = name;
+				this.Count = Number(count);
+				this.Fee = Number(fee);
+				this.Total = count * fee;
+
+				this.DiscountPercentage = discountPercentage;
+				this.DiscountAmount = discountAmount;
+				this.DiscountedFee = discountedFee;
+				this.TotalDiscounted = count * discountedFee; // فی بعد از تخفیف
+
+				this.MoafAzMaliatForoush = moafAzMaliatForoush;
+				this.TaxPercentage = Number(taxPercentage);
+				// if product is moaf az maliat foroush: set tax amount to 0
+				this.TaxAmount = (this.MoafAzMaliatForoush == "False") ? ((this.TotalDiscounted * this.TaxPercentage) / 100) : 0;
+
+				this.D_Av_Kala = +D_Av_Kala;
+				this.AvarezAmount = (this.MoafAzMaliatForoush == "False") ? ((this.TotalDiscounted * this.D_Av_Kala) / 100) : 0;
+				this.TotalAvarez += this.AvarezAmount;
+
+				this.TotalAfterTax = this.Total + this.TaxAmount + this.AvarezAmount;
+				this.TotalDiscountedWithTax = this.TotalDiscounted + this.TaxAmount + this.AvarezAmount;
+
+				this.AgentId = +agentId;
+
+				this.Pors_Mbg_Rdf = +pors_Mbg_Rdf;
+				this.Pors_Dr_Rdf = +pors_Dr_Rdf;
+
+				console.log(this.Total + 'Total');
+				console.log(this.TotalDiscounted + 'TotalDiscounted');
+				console.log(this.TaxPercentage + 'TaxPercentage');
+				console.log(this.TaxAmount + 'TaxAmount');
+				console.log(this.D_Av_Kala + 'D_Av_Kala');
+				console.log(this.AvarezAmount + 'AvarezAmount');
+				console.log(this.TotalAfterTax + 'TotalAfterTax');
+				console.log(this.TotalDiscountedWithTax + 'TotalDiscountedWithTax');
+
+			}
+		}
+		var products = [];
+
+
+		// ### Add Product to Factor ###
+		$("#addProductToFactor").on("click", async () => {
+			// item is parent that contains needed fields
+			var item = $("#productSlides").find(".active");
+
+			if ($(item).find('.inputtotal').val() == "" || $(item).find('.inputtotal').val() == "0") {
+				return;
+			}
+			else {
+				var id = $(item).find(".itemId").val();
+				var name = $(item).find(".itemName").val();
+				var count = parseInt($(item).find(".itemCount").val());
+				var fee = parseInt($(item).find(".itemFee").val());
+				var taxPercentage = Number($(item).find(".taxPercentageInput").val());
+				var d_Av_Kala = $(item).find(".D_Av_Kala").val();
+				console.log(d_Av_Kala);
+				var moafAzMaliatForoush = $(item).find(".moafAzMaliatForoushInput").val();
+				var id_tbl_Anbar = $(item).find(".ID_tbl_Anbar").val();
+				var id_tblVahede_Kala = $(item).find(".ID_tblVahede_Kala").val();
+				var discountPercentage = 0;
+				var discountAmount = 0;
+				var discountedFee = fee;
+				var agentId = $(item).find("#agentName").val();
+				var pors_Mbg_Rdf = $(item).find("#Pors_Mbg_Rdf").val();
+				var pors_Dr_Rdf = $(item).find("#Pors_Dr_Rdf").val();
+
+				await $.getJSON(`@host/api/product/serviceHasDiscount?productId=${id}`, function (data) {
+					if (data["typ_Aglm_Tkhfif_Dor"] != null) {
+						if (data["typ_Aglm_Tkhfif_Dor"] == "تخفیف مبلغی") {
+							if (data["mgdar_Aglm_Tkhfif_Dor"] < fee) {
+								discountAmount = data["mgdar_Aglm_Tkhfif_Dor"];
+								discountPercentage = discountAmount / fee * 100;
+							}
+						}
+						else if (data["typ_Aglm_Tkhfif_Dor"] == "تخفیف درصدی") {
+							if (data["mgdar_Aglm_Tkhfif_Dor"] < 100) {
+								discountPercentage = data["mgdar_Aglm_Tkhfif_Dor"];
+								discountAmount = (discountPercentage * fee) / 100;
+							}
+						}
+						discountedFee = fee - discountAmount;
+					}
+				});
+
+				//creating new Product based on fields above and adding it to products array
+				var p = new Product(id, name, count, fee, taxPercentage, moafAzMaliatForoush, id_tbl_Anbar, id_tblVahede_Kala, discountPercentage, discountAmount, discountedFee, d_Av_Kala, agentId, pors_Dr_Rdf, pors_Mbg_Rdf);
+				products.push(p);
+
+				// adding the new product to table
+				var addToTabelHTML = `<tr>
+																							 <td class="itemName">${p.Name}</td>
+																							 <td class="itemCount">${p.Count}</td>
+																							 <td class="itemFee">${(new Intl.NumberFormat().format(p.Fee)).toString()}</td>
+																							 <td >${(new Intl.NumberFormat().format(p.DiscountedFee)).toString()}</td>
+																							 <td >${(new Intl.NumberFormat().format(p.TaxPercentage)).toString()}</td>
+																							 <td >${(new Intl.NumberFormat().format(p.D_Av_Kala)).toString()}</td>
+																							 <td>${(new Intl.NumberFormat().format(p.TotalDiscountedWithTax)).toString()}</td>
+																							 <td>
+																								 <span class="btn btn-danger" onclick="deleteFromTable($(this), ${p.Id})"">حذف</span>
+																								 <span class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="reqEditItem($(this).closest('tr'), ${p.Id})"">ویرایش</span>
+																							 </td>
+																						  </tr>`
+
+				var tableBody = $("#factorItemsTableBody");
+				tableBody.append(addToTabelHTML);
+
+
+				$(item).find(".itemCount").val('');
+				$(item).find(".inputtotal").val(0);
+				$('#addProductToFactor').prop("disabled", true);
+				refreshFactorTabel();
+				calculateFactor();
+				enableSubmitButton();
+			}
+
+
+
+		});
+
+
+		// ### Delete Item From Table
+		function deleteFromTable(t, id) {
+			var index = products.findIndex(item => item.Id == id);
+			products.splice(index, 1);
+			$(t).closest('tr').remove()
+
+			calculateFactor();
+			enableSubmitButton();
+		}
+
+
+		// ### Update Product
+		// trying to fill edit modal fields with table fields
+		// var editProduct;
+		function reqEditItem(tr, id) {
+
+			var name = $(tr).find(".itemName").text();
+			var count = $(tr).find(".itemCount").text();
+			var fee = $(tr).find(".itemFee").text().replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "").replace(",", "");
+			var code = 0;
+			var imgSrc = "";
+			$('.carousel-item').each(function () { // replace '.yourClass' with your actual selector
+				if ($(this).find('.itemId').val() == id) {
+					imgSrc = $(this).find("img").attr('src');
+					code = $(this).find(".itemCode").val();
+				}
+			});
+
+
+			// editProduct = new Product(id, name, count, fee);
+
+			editModal = $("#editProductSlides");
+			$(editModal).find("img").attr("src", imgSrc);
+			$(editModal).find("img").attr("alt", name);
+			$(editModal).find(".itemId").val(id);
+			$(editModal).find(".itemName").val(name);
+			$(editModal).find(".itemCode").val(code);
+			$(editModal).find(".itemCount").val(count);
+			$(editModal).find(".itemFee").val(fee);
+			$(editModal).find(".itemTotal").val((fee * count));
+
+			console.log();
+			console.log(count);
+			console.log(fee);
+			console.log(count * fee);
+			$('#inputtotalEdit').val(count * fee);
+			calculateFactor();
+		}
+
+		// applying edit
+		$("#editProductInFactor").on("click", async () => {
+
+			var id = $(editModal).find(".itemId").val();
+			var name = $(editModal).find(".itemName").text();
+			var count = Number($(editModal).find(".itemCount").val());
+			var fee = $(editModal).find(".itemFee").val();
+			var total = Number($(editModal).find(".itemTotal").val());
+
+			var index = products.findIndex(item => item.Id == id);
+
+			console.log(id);
+			console.log(name);
+			console.log(count);
+			console.log(fee);
+			console.log(total);
+
+
+			await $.getJSON(`@host/api/product/serviceHasDiscount?productId=${id}`, function (data) {
+				console.log(data);
+				if (data["typ_Aglm_Tkhfif_Dor"] != null) {
+					console.log(data["mgdar_Aglm_Tkhfif_Dor"]);
+					if (data["typ_Aglm_Tkhfif_Dor"] == "تخفیف مبلغی") {
+						if (data["mgdar_Aglm_Tkhfif_Dor"] < fee) {
+							products[index].DiscountAmount = data["mgdar_Aglm_Tkhfif_Dor"];
+							products[index].DiscountPercentage = products[index].DiscountAmount / fee * 100;
+						}
+					}
+					else if (data["typ_Aglm_Tkhfif_Dor"] == "تخفیف درصدی") {
+						if (data["mgdar_Aglm_Tkhfif_Dor"] < 100) {
+							products[index].DiscountPercentage = data["mgdar_Aglm_Tkhfif_Dor"];
+							products[index].DiscountAmount = (products[index].DiscountPercentage * fee) / 100;
+							console.log(products[index].DiscountAmount);
+						}
+					}
+					products[index].DiscountedFee = fee - products[index].DiscountAmount;
+				}
+			});
+
+
+
+
+			products[index].Count = count;
+			products[index].Total = total;
+			products[index].TotalDiscounted = count * products[index].DiscountedFee;
+			products[index].TaxAmount = (products[index].MoafAzMaliatForoush == "False") ? ((products[index].TotalDiscounted * products[index].TaxPercentage) / 100) : 0;
+			console.log((products[index].TotalDiscounted * products[index].TaxPercentage) / 100);
+
+
+			products[index].AvarezAmount = (products[index].MoafAzMaliatForoush == "False") ? ((products[index].TotalDiscounted * products[index].D_Av_Kala) / 100) : 0;
+			console.log((products[index].TotalDiscounted * products[index].D_Av_Kala) / 100);
+
+			products[index].TotalAfterTax = (count * products[index].DiscountedFee) + products[index].TaxAmount + products[index].AvarezAmount;
+
+			products[index].TotalDiscountedWithTax = products[index].TotalDiscounted + products[index].TaxAmount + products[index].AvarezAmount;
+
+			refreshTable();
+
+			$(editModal).find(".itemId").val('');
+			$(editModal).find(".itemName").val('');
+			$(editModal).find(".itemCount").val('');
+			$(editModal).find(".itemFee").val('');
+			$(editModal).find(".itemTotal").val('');
+
+			calculateFactor();
+		});
+
+		function refreshTable() {
+			var tableBody = $("#factorItemsTableBody");
+
+			var tblInnerHtml = '';
+			var tblRow;
+
+
+			for (let i = 0; i < products.length; i++) {
+				tblRow = `<tr>
+											<td class="itemName">${products[i].Name}</td>
+											<td class="itemCount">${products[i].Count}</td>
+											<td class="itemFee">${(new Intl.NumberFormat().format(products[i].Fee)).toString()}</td>
+											<td >${(new Intl.NumberFormat().format(products[i].DiscountedFee)).toString()}</td>
+											<td >${(new Intl.NumberFormat().format(products[i].TaxPercentage)).toString()}</td>
+											<td >${(new Intl.NumberFormat().format(products[i].D_Av_Kala)).toString()}</td>
+											<td>${(new Intl.NumberFormat().format(products[i].TotalDiscountedWithTax)).toString()}</td>
+											<td>
+											<span class="btn btn-danger" onclick="deleteFromTable($(this), ${products[i].Id})"">حذف</span>
+											<span class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editProductModal" onclick="reqEditItem($(this).closest('tr'), ${products[i].Id})"">ویرایش</span>
+											</td>
+										  </tr>`
+				tblInnerHtml += (tblRow);
+			}
+			tableBody.html(tblInnerHtml);
+
+			refreshFactorTabel();
+
+
+		}
+
+
+		// ### Calculate factor detail fields
+		var total = 0;
+		var totalAfterItemsDiscount = 0;
+		var totalTax = 0;
+		var finalTotal = 0;
+		var itemsTotalDiscount = 0;
+		var discountAmount = 0;
+
+		function calculateFactor() {
+			total = 0;
+			totalAfterItemsDiscount = 0;
+			totalTax = 0;
+			totalAV = 0;
+			finalTotal = 0;
+			totalCount = 0;
+			itemsTotalDiscount = 0;
+			for (let i = 0; i < products.length; i++) {
+				total += products[i].Total;
+				totalCount += products[i].Count;
+				totalAfterItemsDiscount += products[i].DiscountedFee * products[i].Count;
+				itemsTotalDiscount += products[i].DiscountAmount * products[i].Count;
+			}
+			$("#factordetailtotal").val(new Intl.NumberFormat().format(totalAfterItemsDiscount));
+			$("#itemsTotalDiscount").val(itemsTotalDiscount);
+			$("#discountAmount").attr("max", totalAfterItemsDiscount - 1);
+
+			for (let i = 0; i < products.length; i++) {
+				totalTax += products[i].TaxAmount;
+				totalAV += products[i].AvarezAmount;
+			}
+			$("#totalTax").val(Math.round(new Intl.NumberFormat().format(totalTax + totalAV)));
+			$("#totalTaxToPost").val(new Intl.NumberFormat().format(totalTax));
+			$("#totalAvToPost").val(new Intl.NumberFormat().format(totalAV));
+
+			for (let i = 0; i < products.length; i++) {
+				finalTotal += products[i].TotalAfterTax;
+			}
+			finalTotal = totalAfterItemsDiscount - discountAmount + totalTax + totalAV;
+			$("#factorDetailFinalTotal").val(Math.round(finalTotal));
+			$("#finalTotalToPost").val(new Intl.NumberFormat().format(finalTotal));
+
+			$("#totalDiscountAmountToPost").val(discountAmount);
+			$("#totalDiscountAmountWithItemsToPost").val(discountAmount + itemsTotalDiscount);
+
+			$("#totalItemCount").val(totalCount)
+		}
+
+		// ## Sync Discount Amount and Discount percentage
+
+		$("#discountPercentage").on('change', () => {
+			if ($("#discountPercentage").val() > 99) {
+				$("#discountPercentage").val(0);
+			}
+
+			$("#discountAmount").val(~~(totalAfterItemsDiscount * $("#discountPercentage").val() / 100));
+			discountAmount = Number($("#discountAmount").val());
+			calculateFactor();
+		});
+		$("#discountAmount").on('change', () => {
+			if ($("#discountAmount").val() > totalAfterItemsDiscount - 1) {
+				$("#discountAmount").val(0);
+			}
+			$("#discountPercentage").val(($("#discountAmount").val() / totalAfterItemsDiscount * 100).toFixed(2));
+			discountAmount = Number($("#discountAmount").val());
+			calculateFactor();
+		});
+
+		function refreshFactorTabel() {
+			var factorTable = $("#factorItemsToPost");
+
+			var factorTblHtml = ``;
+			var factorTblRow;
+
+			for (let i = 0; i < products.length; i++) {
+				factorTblRow = `<tr>
+																									<td><input name="SaleFactor.Items[${i}].Pors_Dr_Rdf" value="${products[i].Pors_Dr_Rdf}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].Pors_Mbg_Rdf" value="${products[i].Pors_Mbg_Rdf}"/></td>
+																					<td><input name="SaleFactor.Items[${i}].ID_tbl_Khedmat" value="${products[i].Id}"/></td>
+																					<td><input name="SaleFactor.Items[${i}].ID_tblVahede_Kala" value="${products[i].ID_tblVahede_Kala}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].Tedad" value="${products[i].Count}"/></td>
+																							  <td><input name="SaleFactor.Items[${i}].Fi_Bed_Haz" value="${products[i].Fee}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].MA_Radf_K" value="${products[i].TaxPercentage}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].AV_Radf_K" value="${products[i].D_Av_Kala}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].Mbg_MA_Radf_K" value="${products[i].TaxAmount}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].Mbg_AV_Radf_K" value="${products[i].AvarezAmount}"/></td>
+																					<td><input name="SaleFactor.Items[${i}].M_KHLS" value="${products[i].TotalAfterTax}"/></td>
+																					<td><input name="SaleFactor.Items[${i}].D_T_Radf_K" value="${products[i].DiscountPercentage}"/></td>
+																					<td><input name="SaleFactor.Items[${i}].M_T_Radf_K"  value="${products[i].DiscountAmount * products[i].Count}"/></td>
+																							<td><input name="SaleFactor.Items[${i}].Fi_Ba_Takh" value="${products[i].DiscountedFee}"/></td>
+																											<td><input name="SaleFactor.Items[${i}].ID_tbl_TarafHesab_Moj_Rdf" value="${products[i].AgentId}"/></td>
+																			   </tr>`
+				factorTblHtml += (factorTblRow);
+			}
+			factorTable.html(factorTblHtml);
+		}
+
+		// used to disable or enable submit button
+		function enableSubmitButton() {
+			if ((products.length > 0) && ($("#partnerIdToPost").val() != "")) {
+				$('#finalSubmit').removeAttr("disabled");
+			} else {
+				$('#finalSubmit').prop("disabled", true);
+			}
+		}
+
+		$("#finalSubmit").on("click", () => {
+
+			$("#saleFactorDescription").val($("#SaleFactor_Dc_F").val());
+			if ($("#saleFactorDescription").val().length > 300) {
+				alert("نمیتوانید بیشتر از 300 کاراکتر وارد کنید.");
+				return;
+			}
+
+			let url = '@host/api/factor/validateinputsService';
+			let data = {
+				PartnerId: $("#partnerIdToPost").val(),
+				BranchId: $("#partnerBranchIdToPost").val(),
+				AgentValidation: true,
+				Products: [],
+			};
+			products.forEach((item, index) => {
+				data.Products.push({ "ProductId": item.Id, "ProductName": item.Name });
+			});
+
+			fetch(url, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			})
+				.then(response => response.json())
+				.then(data => {
+					if (data.result == false) {
+						let failMessage = "";
+						data.fails.forEach((item) => {
+							failMessage += item + "\n"
+						})
+						alert(failMessage);
+					} else {
+						$("#finalDetailsForm").submit();
+					}
+				})
+				.catch((error) => {
+					alert('Error:', error);
+				});
+		});
+
+		//  this piece of code is for when we increase number of products the add button gets active,
+		// and we uses code below to deactivate it again
+		(function () {
+			var originalAddClassMethod = jQuery.fn.addClass;
+			var originalRemoveClassMethod = jQuery.fn.removeClass;
+
+			jQuery.fn.addClass = function () {
+				var result = originalAddClassMethod.apply(this, arguments);
+				jQuery(this).trigger('classChanged');
+				return result;
+			}
+
+			jQuery.fn.removeClass = function () {
+				var result = originalRemoveClassMethod.apply(this, arguments);
+				jQuery(this).trigger('classChanged');
+				return result;
+			}
+		})();
+
+		let carouselItems = document.querySelectorAll(".carousel-item");
+		let config = { attributes: true, attributeFilter: ['class'] };
+
+		let callback = function (mutationsList, observer) {
+			for (let mutation of mutationsList) {
+				if (mutation.type === 'attributes') {
+
+					var item = $("#productSlides").find(".active");
+					$(item).find('.inputtotal').val($(item).find('.countinput').val() * $(item).find('.feeinput').val());
+					if (!(($(item).find('.countinput').val() == '') || ($(item).find('.countinput').val() == 0))) {
+						$('#addProductToFactor').removeAttr("disabled");
+					} else {
+						$('#addProductToFactor').prop("disabled", true);
+					}
+
+				}
+			}
+		};
+		let observer = new MutationObserver(callback)
+		carouselItems.forEach((item) => {
+			observer.observe(item, config);
+		});
+		// end of piece of code
+
+
+	</script>
+
+				@* Search Partner and product *@
+	<script>
+		// used to specify if we have recieved partner id onGet or not
+		var specificPartner = "@specificPartner" == "False" ? false : true;
+
+		$(document).ready(function () {
+
+			// If we we have received partnerId, the request to get partners is not called,
+			// instead we send request to get branches of that partner.
+
+			if (!specificPartner) {
+				$.ajaxSetup({ cache: false });
+				$('#searchPartner').on('focus keyup', () => {
+					$('#result').html('');
+					$('#state').val('');
+					var searchField = $('#searchPartner').val();
+					var expression = new RegExp(searchField, "i");
+					$("#main-panel").css("display", "none");
+
+					$.getJSON(`@host/api/Partner/getpartnersforfactor`, function (data) {
+						$.each(data, function (key, value) {
+							if (value.name_TarafHesab.search(expression) != -1) {
+								$('#result').append('<li class="list-group-item link-class">' + value.name_TarafHesab +
+									'<input class="idofpartnerssearch" type="hidden" value="' + value.iD_tbl_TarafHesab + '"/>' +
+									'</li>');
+							}
+						});
+					});
+				});
+			} else {
+				$('#partnerBranch').html('');
+				$.getJSON(`@host/api/Partner/getPartnerBranchesForFactor?partnerId=@Model.Partners.First().ID_tbl_TarafHesab`, function (data) {
+					$('#partnerBranch').append(`<option value="0" selected> شعبه اصلی </option>`);
+					$.each(data, function (key, value) {
+						$('#partnerBranch').append(`<option value="${value.iD_tbl_Partner_Branch}"> ${value.name_Branch} </option>`);
+					});
+				});
+			}
+
+			// on click of any partner from the list we created above, we set partner id and send that id to get it's branches.
+
+			$('#result').on('click', 'li', function () {
+				var click_text = $(this).text();
+				$('#searchPartner').val($.trim(click_text));
+				$('#partnerIdToPost').val($(this).find('.idofpartnerssearch').val());
+
+				$("#main-panel").css("display", "block");
+
+				$('#partnerBranch').html('');
+				$.getJSON(`@host/api/Partner/getPartnerBranchesForFactor?partnerId=${$('#partnerIdToPost').val()}`, function (data) {
+					$('#partnerBranch').append(`<option value="0" selected> شعبه اصلی </option>`);
+					$.each(data, function (key, value) {
+						$('#partnerBranch').append(`<option value="${value.iD_tbl_Partner_Branch}"> ${value.name_Branch} </option>`);
+					});
+				});
+
+				$('#partnerBranchIdToPost').val(0);
+
+				$("#result").html('');
+				enableSubmitButton();
+			});
+		});
+
+		$('#partnerBranch').on("change", () => {
+			$('#partnerBranchIdToPost').val($(partnerBranch).val());
+		});
+
+		// بسته شدن لیست نتایج هنگام کلیک خارج از اینپوت یا لیست
+        $(document).on('click', function (event) {
+            if (!$(event.target).closest('#searchProduct').length && !$(event.target).closest('#productSearchResult').length) {
+                $('#productSearchResult').html('');
+            }
+        });
+
+		$(document).ready(function () {
+			$.ajaxSetup({ cache: false });
+			$('#searchProduct').on('focus keyup', () => {
+				$('#productSearchResult').html('');
+				var searchField = $('#searchProduct').val();
+				var expression = new RegExp(searchField, "i");
+				$.getJSON(`@host/api/Product/getServicesForFactorSearch`, function (data) {
+					$.each(data, function (key, value) {
+						if (value.name_Khedmat.search(expression) != -1) {
+							$('#productSearchResult').append('<li class="list-group-item link-class">' + value.name_Khedmat + '<input type="hidden" value="' + value.iD_tbl_Khedmat + '"/>' + '</li>');
+						}
+					});
+				});
+			});
+
+
+			$('#productSearchResult').on('click', 'li', function () {
+				var id = $(this).find('input').val();
+
+				$('.carousel-item').each(function () {
+
+					if ($(this).hasClass('active')) {
+						$(this).removeClass('active');
+					}
+				});
+				$('.carousel-item').each(function () {
+
+					if ($(this).find('.itemId').val() == id) {
+						$(this).addClass('active');
+					}
+				});
+
+				$("#productSearchResult").html('');
+			});
+
+
+
+			// $('#searchProduct').on('focusout', () => {
+			//     var delayInMilliseconds = 1000; //1 second
+
+			//     //setTimeout(function () {
+			//         $('#productSearchResult').html(''); $('#productSearchResult').html('');
+			//     //}, 1000);
+
+
+			// });
+		});
+	</script>
+
+			}
+
+
+
+

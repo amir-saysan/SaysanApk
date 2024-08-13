@@ -1,0 +1,218 @@
+﻿@page "/Partnership/PartnerFactors/{PartnerId:int}/{Name}"
+@model SaysanPwa.Api.Pages.Partnership.PartnerFactorsModel
+@using SaysanPwa.Application.Utilities.DateAndTime;
+@using System.Security.Claims;
+@{
+    ViewBag.Title = $"{Model.Result.Result.DistinctBy(x => x.N_F).Count()} فاکتور آخر {Model.Name}";
+}
+
+<div class="card">
+    <div class="card-header">فیلتر ها</div>
+    <div class="card-body">
+        <form asp-page="/Partnership/PartnerFactors" method="get" id="page-form">
+            <input type="hidden" asp-for="CurrentPage" />
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <label>از تاریخ: </label>
+                    <input class="form-control" asp-for="From" data-jdp data-jdp-max-date="today" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <label>تا تاریخ: </label>
+                    <input class="form-control" asp-for="To" data-jdp data-jdp-max-date="today" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                    <br />
+                    <button type="submit" class="btn btn-success" onclick="PostForm()">جستجو</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="accordion" id="accordionPanelsStayOpenExample">
+
+    @foreach (var item in Model.Result.Result.DistinctBy(x => x.N_F))
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@item.ID_tbl_FF')" type="button">
+                    <p>
+
+                        <lable>
+                            شماره فاکتور: <strong>@item.N_F</strong>
+                        </lable>
+
+                        <lable>
+                            تاریخ: <strong>@item.Dt_F</strong>
+                        </lable>
+
+                    </p>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapse-@item.ID_tbl_FF" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab-@item.ID_tbl_FF" data-bs-toggle="tab" data-bs-target="#home-@item.ID_tbl_FF" type="button" role="tab" aria-controls="home" aria-selected="true">اقلام فاکتور</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab-@item.ID_tbl_FF" data-bs-toggle="tab" data-bs-target="#profile-@item.ID_tbl_FF" type="button" role="tab" aria-controls="profile-@item.ID_tbl_FF" aria-selected="false">اطلاعات کلی فاکتور</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home-@item.ID_tbl_FF" role="tabpanel" aria-labelledby="home-tab-@item.ID_tbl_FF">
+                            <div id="report-list-@item.ID_tbl_FF">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>اقلام فاکتور</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-bordered table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>نام کالا</th>
+                                                    <th>تعداد</th>
+                                                    <th>فی</th>
+                                                    <th>مبلغ کل</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var selledItem in Model.Result.Result.Where(x => x.N_F.Equals(item.N_F)))
+                                                {
+                                                    <tr>
+                                                        <td>@selledItem.Name_Kala</td>
+                                                        <td>@selledItem.Tedad.ToString("N0")</td>
+                                                        <td>@selledItem.Fi.ToString("N0")</td>
+                                                        <td>@selledItem.Mablagh.ToString("N0")</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile-@item.ID_tbl_FF" role="tabpanel" aria-labelledby="profile-tab-@item.ID_tbl_FF">
+                            <div id="report-info-@item.ID_tbl_FF">
+                                <div class="card mt-2">
+                                    <div class="card-header">
+                                        <h4>اطلاعات کل فاکتور</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>مشتری: <strong>@item.Name_TarafHesab</strong></label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>کد: <strong>@item.Code_TarafHesab</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>شعبه: <strong>@item.Name_Branch</strong></label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>تلفن: <strong>@item.ChelPhone_TarafHesab</strong></label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>مبلغ کل: <strong>@Model.Result.Result.Sum(x => x.Mablagh).ToString("N0")</strong></label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>تخفیف: <strong>@item.Tkh_A_F.ToString("N0")</strong></label>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>مالیات: <strong>@item.JM_F.ToString("N0")</strong></label>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <label>مبلغ نهایی: <strong>@((item.J_F - item.Tkh_A_F).ToString("N0"))</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+                                    <button class="btn btn-info p-1" type="button" onclick="printDiv('report-list-@item.ID_tbl_FF', 'report-info-@item.ID_tbl_FF')">چاپ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@if(Model.Result.Result.Any())
+{
+    <div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+        <div class="w-full h-full d-flex" style="height: 100%; ">
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group me-2" role="group" aria-label="First group">
+                    @for (int index = 0; index < Model.Result.PageInfo.TotalPage; index++)
+                    {
+                        <button type="button" class="btn btn-outline-primary @(index == Model.Result.PageInfo.CurrentPage ? "active" : "")" onclick="changePage(@index)">@(index + 1)</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+@section Script
+    {
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleDisplay(id) {
+            var div = document.getElementById(id);
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        }
+
+
+        function changePage(id) {
+            $("#CurrentPage").val(id);
+            $("#page-form").submit();
+        }
+
+        function PostForm() {
+            $("#CurrentPage").val(0);
+            $("#page-form").submit();
+        }
+
+
+        function printDiv(listDivId, infoDivId) {
+            var listDiv = document.getElementById(listDivId);
+            var infoDiv = document.getElementById(infoDivId);
+            var newWindow = window.open('', '_blank', 'width=600,height=600');
+            newWindow.document.open();
+            let headTag = '<head><link rel="stylesheet" type="text/css" href="/lib/css/bootstrap.rtl.min.css"></head>';
+        @{
+            string localDate = DateTime.Now.ToPersianData();
+            string reportDate = Model.Result.Result.Any() ? Model.Result.Result.ToArray()[0].Dt_F : "-";
+            string factorNumber = Model.Result.Result.Any() ? Model.Result.Result.ToArray()[0].N_F.ToString() : "-";
+            string companyName = User.FindFirstValue("Comapny_Name")! ?? "-";
+        }
+                let secondDiv = '<div class="row"><div class="col-lg-6 col-md-6 col-sm-6 col-6"><strong>فاکتور فروش</strong></div><div class="col-lg-6 col-md-6 col-sm-6 col-6">' + 'شماره: @factorNumber' + '</div></div>';
+            let headerTag = '<div class="alert alert-dark"><div class="row"><div class="col-lg-6 col-md-6 col-sm-6 col-6"><strong>@companyName</strong></div><div class="col-lg-6 col-md-6 col-sm-6 col-6"><strong>' + 'تاریخ: @reportDate' + '</strong></div></div>' + secondDiv + '</div>';
+            newWindow.document.write('<html>' + headTag + '<body dir="rtl" onload="window.print()">' + headerTag + infoDiv.innerHTML + '<br/>' + listDiv.innerHTML + '<br/>' +
+                '<div style="font-size: 8px;">نرم افزار حسابداری سایسان - 09149284528</div>');
+            newWindow.document.close();
+        }
+
+    </script>
+}

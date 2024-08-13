@@ -1,0 +1,231 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.VisitPath
+
+@model SaysanPwa.Api.Pages.VisitPath.IndexModel
+@{
+    int i = 1;
+}
+<div>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-12">
+            <button type="button" class="btn btn-primary" onclick="ShowAllPoints()">
+                نماش همه موقیعت ها
+                <img src="/images/location.png" style="width:25px;">
+            </button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table" style="white-space: nowrap;" width="100%">
+            <thead>
+                <tr>
+                    <th>ثبت ویزیت</th>
+                    <th>موقیعت</th>
+                    <th>نام طرفحساب</th>
+                    <th>نام شعبه </th>
+                    <th>مسئول شعبه</th>
+                    <th>آدرس</th>
+                    <th>تلفن</th>
+                    <th>تلفن همراه</th>
+                    <th>شعبه اصلی/فرعی</th>
+                    <th>موقعیت مکانی</th>
+                    <th hidden>آیدی طرفحساب</th>
+                    <th hidden>آیدی شعبه شرفحساب</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in @Model.Paths)
+                {
+                    string[] locationArray = p.Location.Split(',');
+                    float lat = 0;
+                    float lng = 0;
+                    if (locationArray.Length >= 1 && locationArray[0]!="" &&  locationArray.Any())
+                    {
+                        lat = float.Parse(locationArray[0]);
+                        lng = float.Parse(locationArray[1]);
+                    }
+                    <tr>
+                        <td>
+                            <button class="btn btn-success text-center" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="pathId(@p.ID_tbl_ToVisit_Branch_Per_Partner_Daily)">
+                                <img src="images/house.png" style="width:25px;">
+                            </button>
+                            <input type="hidden" id="pathidtbl" value="@p.ID_tbl_ToVisit_Branch_Per_Partner_Daily" />
+                        </td>
+                        <td>
+                            <button class="btn btn-info text-center" onclick="openMasterMap(@lat, @lng, '@p.Name_TarafHesab')">
+                                   
+                                <img src="/images/pin.png" alt="موقیعت مکانی طرفحساب" style="width: 25px" />
+                            </button>
+                        </td>
+                        <td>@p.Name_TarafHesab</td>
+                        <td>@p.Name_Branch</td>
+                        <td>@p.Name_responsible</td>
+                        <td>@p.Address_Asli</td>
+                        <td>@p.Tell_Asli</td>
+                        <td>@p.ChelPhone_TarafHesab</td>
+                        <td>@p.Brnach_Asli_Farei</td>
+                        <td>@(string.IsNullOrEmpty(p.Location) ? "" : p.Location)</td>
+                        <td hidden>@p.ID_tbl_TarafHesab</td>
+                        <td hidden>@p.ID_tbl_Partner_Branch</td>
+                    </tr>
+                    @* else
+                    {
+                        <tr class="visited">
+                            <td class="visited">@i</td>
+                            <td>
+                                <button class="btn btn-info text-center" onclick="openMasterMap(@lat, @lng, '@p.Name_TarafHesab')">
+
+                                    <img src="/images/pin.png" alt="موقیعت مکانی طرفحساب" style="width: 25px" />
+                                </button>
+                            </td>
+                            <td>@p.Name_TarafHesab</td>
+                            <td>@p.Name_Branch</td>
+                            <td>@p.Name_responsible</td>
+                            <td>@p.Address</td>
+                            <td>@p.Tell</td>
+                            <td>@p.Brnach_Asli_Farei</td>
+                            <td>@p.Location</td>
+                            <td>@p.ID_tbl_TarafHesab</td>
+                            <td>@p.ID_tbl_Partner_Branch</td>
+                        </tr>
+                    } *@
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- Visited Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">توضیح ویزیت</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="post" class="needs-validation">
+                    <div class="modal-body">
+                        <label asp-for="@Model.EditPath.Description_Visited">توضیحات :</label>
+                        <textarea class="form-control" maxlength="1000" id="description" rows="3" asp-for="@Model.EditPath.Description_Visited"></textarea>
+                        <span asp-validation-for="@Model.EditPath.Description_Visited" class="text-danger"></span>
+
+                        <input id="ID_tbl_TarafHesab" value="@Model.EditPath.ID_tbl_TarafHesab" type="hidden" asp-for="@Model.EditPath.ID_tbl_TarafHesab" />
+                        <input id="ID_tbl_Partner_Branch" value="@Model.EditPath.ID_tbl_Partner_Branch" type="hidden" asp-for="@Model.EditPath.ID_tbl_Partner_Branch" />
+                     
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">تایید</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<div id="map-container" disabled>
+    <h3 style="color: maroon"><strong>مشاهده موقیعت مکانی روی نقشه</strong> 
+        <span>
+            <button class="btn btn-sm btn-danger" type="button" onclick="closeMasterMap()">X</button>
+        </span>
+    </h3>
+    <div id="map"></div>
+</div>
+
+
+<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+    <div class="w-full h-full d-flex" style="height: 100%; ">
+        <div class="w-100 d-flex justify-content-center" style="height: 100%; align-items: center;">
+            <a style="color: red; text-decoration: none;" href="/">انصراف</a>
+        </div>
+    </div>
+</div>
+
+@section Script {
+    <script>
+
+        const map = new L.Map("map", {
+            key: "web.b6257f3b40df46b69ee962222be7a46a",
+            maptype: "neshan",
+            poi: true,
+            traffic: false,
+            center: [38.068450, 46.316191],
+            zoom: 16,
+        }).locate({ setView: true, maxZoom: 16 });
+
+
+        $("#map-container").fadeOut("slow");
+
+        function openMasterMap(lat, lng, name) {
+            removeMarkers();
+            addMarker(lat, lng, name);
+            $("#map-container").fadeIn("slow");
+            $('html, body').animate({ scrollTop: $('#map-container').offset().top }, 'slow');
+
+        }
+
+        function addMarker(lat, lng, name)
+        {
+            if (lat != 0 && lng != 0) {
+                var icon = new L.Icon.Default();
+                icon.options.shadowSize = [0, 0];
+                var marker = new L.Marker([lat, lng], { icon: icon }).addTo(map);
+                marker.bindPopup(`<b>${name}</b>`).openPopup();
+            }
+        }
+
+        function removeMarkers()
+        {
+            $(".leaflet-marker-icon").remove();
+        }
+
+        var latitude = 0;
+        var longtitude = 0;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                latitude = position.coords.latitude.toFixed(15);
+                longtitude = position.coords.longitude.toFixed(15);
+
+                var circle = L.circle([latitude, longtitude], {
+                    color: 'blue',
+                    fillColor: '#99ddff',
+                    fillOpacity: 0.4,
+                    radius: 100
+                }).addTo(map);
+
+                circle.bindPopup("موقیعت جاری");
+
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else {
+            alert("محل جغرافیایی در این مرورگر پشتیبانی نمیشود");
+        }
+
+        function ShowAllPoints()
+        {
+            removeMarkers();
+            @foreach(var item in Model.Paths.Where(p => !string.IsNullOrEmpty(p.Location)))
+            {
+                string[] location = item.Location.Split(',');
+                @:addMarker(@float.Parse(location[0]), @float.Parse(location[1]), '@item.Name_TarafHesab');
+            }
+                $("#map-container").fadeIn("slow");
+            $('html, body').animate({ scrollTop: $('#map-container').offset().top }, 'slow');
+        }
+
+
+        function closeMasterMap()
+        {
+            $("#map-container").fadeOut("slow");
+        }
+
+        function pathId(i) {
+            console.log(i);
+            $('#pathid').val(i);
+        }
+    </script>
+}

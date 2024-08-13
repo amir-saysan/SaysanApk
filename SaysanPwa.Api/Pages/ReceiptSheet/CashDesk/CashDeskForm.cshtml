@@ -1,0 +1,34 @@
+﻿@page "{SessionId}"
+@model SaysanPwa.Api.Pages.ReceiptSheet.CashDesk.CashDeskFormModel
+@{
+    Layout = "";
+}
+
+
+<form method="post" id="cash-desk-form">
+    <div class="form-group">
+        <label>صندوق: </label>
+        <select asp-for="FormInput.CashDeskId" class="form-select">
+            <option value="0">لطفا یک صندوق را انتخاب نمایید.</option>
+            @foreach(var item in Model.CashDesks)
+            {
+                <option value="@item.ID_tbl_Sandog">@item.Name_Sandog</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>مبلغ</label>
+        <input asp-for="FormInput.Price" class="form-control" value="0" />
+    </div>
+    <div class="form-group">
+        <label>توضیحات</label>
+        <textarea asp-for="FormInput.Description" class="form-control">
+        </textarea>
+    </div>
+
+    <hr />
+
+    <div class="text-danger" asp-validation-summary="All"></div>
+
+    <button type="button" class="btn btn-success" onclick="SubmitCashDesk()">ثبت دریافت</button>
+</form>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 75%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width, height=device-height, target-densitydpi=device-dpi">
+    <title>سایسان</title>
+
+    <link rel="stylesheet" href="/Style.css" />
+    
+    <link rel="stylesheet" href="/Google-Icons/material-icons.css">
+    <link rel="stylesheet" href="/css/layout-nav.css">
+    <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css" />
+    <script src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"></script>
+    <link rel="stylesheet" href="/lib/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="/css/persian-date-picker.css"/>
+
+    <style>
+        #map {
+            height: 300px;
+            width: 100%;
+            max-width: 100%;
+            max-height: 300px;
+        }
+
+
+        #branch-map {
+            height: 300px;
+            width: 100%;
+            max-width: 100%;
+            max-height: 300px;
+        }
+    </style>
+    @if (IsSectionDefined("Css"))
+    {
+        await RenderSectionAsync("Css");
+    }
+</head>
+
+<body>
+
+    <script src="/js/layout-js.js"></script>
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="mySidepanel" class="sidepanel" style="background-color: #970000; ">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="color: #ffffff;">&times;</a>
+            <a href="/" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/home.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                صفحه اصلی
+            </a>
+            <a href="/Partnership" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/group.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                طرفحساب ها
+            </a>
+            <a href="/Products" style="display: flex; align-items: center; color: #ffffff; font-size: 17px; ">
+
+                <img src="/images/product.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                کالا ها
+            </a>
+            <a href="/factor" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/registration.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                پیش فاکتور فروش
+            </a>
+            <a href="/SalesFactor" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/registration.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                فاکتور فروش
+            </a>
+            <a href="/ServiceSaleFactor" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/invoice-transparent.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                فاکتور فروش خدمت
+            </a>
+
+            <a href="/ReturnedInvoice" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/invoice-transparent.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                فاکتور برگشتی
+            </a>
+
+
+            <a href="/ReceiptSheet" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/receipt.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                رسید دریافت
+            </a>
+            <a href="#" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/bar-chart.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                گزارشات
+            </a>
+            <a href="/visitpath" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/pin.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                مسیر های ویزیت
+            </a>
+            <a href="#" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/dashboard-icon.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                داشبورد مدیریت
+            </a>
+            <a asp-page="/Logout/Index" style="display: flex; align-items: center; color: #ffffff; font-size: 17px;">
+
+                <img src="/images/logout.png" alt="" style="width: 35px; margin: 0 5px;">
+
+                خروج از حساب کاربری
+            </a>
+        </div>
+    }
+
+    <nav class="navbar sticky navbar-expand-lg navbar-light bg-light ">
+        <div class="col-3 text-center" style="display: flex; justify-content: center; align-items: center">
+            <img src="/images/S_Logo2.ico" class="mx-1" style="width: 20px;">
+            <div style="font-size: 12px; font-weight: bold">
+                سایسان
+            </div>
+            
+        </div>
+
+        <div class="col-6 text-center p-1" style="display: flex; justify-content: center; align-items: center">
+            <div style="font-size: 16px; font-weight: bold">
+                @ViewBag.Title
+            </div>
+        </div>
+
+        @if(User.Identity.IsAuthenticated)
+        {
+            <div class="col-3 text-center p-1" style="display: flex; justify-content: center; align-items: center">
+
+                <button class="openbtn" onclick="openNav()">
+                    <img src="/images/view-list.png" style="width: 28px;">
+                </button>
+
+            </div>
+        }
+    </nav>
+    
+
+    <div class="container-fluid" style="margin: 10px 0 4.5rem;">
+        <main class="">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script src="/lib/jquery/jquery.validate.js"></script>
+    <script src="/lib/jquery/jquery.validate.unobtrusive.min.js"></script>
+    <script src="/js/persian-date-picker.js"></script>
+
+    @if(IsSectionDefined("Script"))
+    {
+        await RenderSectionAsync("Script");
+    }
+
+    <script>
+        $(document).ready(function()
+        {
+            jalaliDatepicker.startWatch({
+                minDate: "attr",
+                maxDate: "attr"
+            });
+        });
+    </script>
+</body>
+
+</html>

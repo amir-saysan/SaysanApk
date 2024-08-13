@@ -1,0 +1,23 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Jobs;
+@model SaysanPwa.Api.Pages.Jobs.IndexModel
+@{
+    ViewBag.Title = "شغل ها";
+}
+
+<br />
+<table>
+    <thead>
+        <tr>
+            <th>عنوان</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (GetAllJobsResponseDto job in @Model.Jobs)
+        {
+            <tr>
+                <td>@job.Title_Job</td>
+            </tr>
+        }
+    </tbody>
+</table>

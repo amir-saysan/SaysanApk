@@ -1,0 +1,47 @@
+﻿@page "{SessionId}"
+@using System.Globalization;
+@model SaysanPwa.Api.Pages.ReceiptSheet.Check.TableModel
+@{
+    Layout = string.Empty;
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>شماره چک</th>
+            <th>مبلغ چک</th>
+            <th>پشت نمره چک</th>
+            <th>سریال</th>
+            <th>تاریخ دریافت</th>
+            <th>تاریخ سررسید</th>
+            <th>توضیحات</th>
+            <th>دستورات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(!Model.Checks.Any())
+        {
+            <tr>
+                <td colspan="8">دریافت چک ثبت نشده است.</td>
+            </tr>
+        }
+        else
+        {
+            foreach(var item in Model.Checks)
+            {
+                <tr>
+                    <td>@item.CheckNumber</td>
+                    <td>@item.CheckAmount.ToString("N")</td>
+                    <td>@item.BehindTheCheckMark</td>
+                    <td>@item.Series</td>
+                    <td>@DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa_IR"))</td>
+                    <td>@item.DuDate</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <button class="btn btn-danger" type="button" onclick="DeleteCheck('@item.ItemId')">حذف</button>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

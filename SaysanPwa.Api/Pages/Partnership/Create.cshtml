@@ -1,0 +1,822 @@
+﻿@page
+@using SaysanPwa.Domain.AggregateModels.LocationAggregate;
+@model SaysanPwa.Api.Pages.Partnership.CreateModel
+@inject IConfiguration configuration
+@{
+    ViewBag.Title = "افزودن طرف حساب";
+}
+
+
+<form method="post" asp-page="/Partnership/Create" id="Form">
+
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+            <h2>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    اطلاعات پایه
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                <div class="accordion-body row">
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Name_TarafHesab"><b>نام / عنوان تجاری : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.Name_TarafHesab" required>
+                        <span asp-validation-for="CreatePartnerModel.Name_TarafHesab" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Type_TarafHesab"><b>نوع شخصیت : </b></label>
+                        <select class="form-control" asp-for="CreatePartnerModel.Type_TarafHesab">
+                            <option value="حقیقی" selected>حقیقی</option>
+                            <option value="حقوقی">حقوقی</option>
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.ID_tbl_Group_TF"><b>گروه : </b></label>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewGroupModal">افزودن گروه جدید</button></label>
+                        <select class="form-control" value="1" asp-for="CreatePartnerModel.ID_tbl_Group_TF">
+                            @foreach (var j in Model.PartnerGroups)
+                            {
+                                <option value="@j.ID_tbl_Group_TF">@j.Name_Group</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.ID_tbl_Job"><b>شغل : </b></label>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#AddNewJobModal">افزودن شغل جدید</button></label>
+                        <select class="form-control" value="1" asp-for="CreatePartnerModel.ID_tbl_Job">
+                            @foreach (var j in Model.Jobs)
+                            {
+                                <option value="@j.ID_tbl_Job">@j.Title_Job</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.CodeMelli_TarafHesab"><b>کد ملی/شناسه ملی : </b></label>
+                        <input class="form-control" asp-for="CreatePartnerModel.CodeMelli_TarafHesab">
+                        <span asp-validation-for="CreatePartnerModel.CodeMelli_TarafHesab" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.CodeEgtesad_TarafHesab"><b>کد اقتصادی : </b></label>
+                        <input class="form-control" asp-for="CreatePartnerModel.CodeEgtesad_TarafHesab" value="">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.BirthDay_TarafHesab"><b>تاریخ تولد : </b></label>
+                        <input class="form-control" asp-for="CreatePartnerModel.BirthDay_TarafHesab" value="" data-jdp data-jdp-max-date="today">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Marrid_Date_TarafHesab"><b>تاریخ ازدواج : </b></label>
+                        <input class="form-control" asp-for="CreatePartnerModel.Marrid_Date_TarafHesab" value="" data-jdp data-jdp-max-date="today">
+                    </div>
+                </div>
+            </div>
+            <div>
+            </div>
+
+
+
+        </div>
+
+        <div class="accordion-item" id="top-location">
+            <h2>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                    آدرس
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                <div class="accordion-body row">
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.ID_tbl_Ostan_Asli"><b>استان : </b></label>
+                        <select id="regionSelect" class="form-control selectpicker" asp-for="CreatePartnerModel.ID_tbl_Ostan_Asli">
+                            @* <option value="1">انتخاب نشده</option> *@
+                            @foreach (Region r in @Model.Regions)
+                            {
+                                <option value="@r.ID_tbl_Ostan">@r.Name_Ostan</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.ID_tbl_SharOstan_Asli"><b>شهر : </b></label>
+                        <select id="citySelect" class="form-control selectpicker" asp-for="CreatePartnerModel.ID_tbl_SharOstan_Asli">
+                            @foreach (City c in Model.Cities)
+                            {
+                                <option value="@c.ID_tbl_SharOstan" data-tokens="@c.Name_SharOstan">@c.Name_SharOstan</option>
+
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Address_Asli"><b>آدرس : </b></label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" asp-for="CreatePartnerModel.Address_Asli" value=""></textarea>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.CodePosti_Asli"><b>کد پستی : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.CodePosti_Asli" value="">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Tell_Asli"><b>تلفن : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.Tell_Asli" value="">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Email_TarafHesab"><b>ایمیل : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.Email_TarafHesab" value="">
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Fax_TarafHesab"><b>فکس : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.Fax_TarafHesab" value="">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label><b>محل جغرافیایی: </b></label>
+                        <label id="master-location">-</label>
+                        <input class="form-control" asp-for="CreatePartnerModel.Location_TarafHesab" type="hidden" value="">
+                        <button type="button" class="btn btn-primary" onclick="openMasterMap()">انتخاب از روی نقشه</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
+                    اعتبار
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                <div class="accordion-body row">
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Jelogiri_Had_Etebar_TarafHesab"><b>جلوگیری حد اعتبار طرفحساب : </b></label>
+                        <input class="" asp-for="CreatePartnerModel.Jelogiri_Had_Etebar_TarafHesab" >
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Sagf_Eteb_Snd_TarafHesab"><b>سقف اعتبار اسنادی : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.Sagf_Eteb_Snd_TarafHesab" value="0">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label asp-for="CreatePartnerModel.Sagf_Eteb_Ngd_TarafHesab"><b>سقف اعتبار نقدی : </b></label>
+                        <input class="form-control" type="text" asp-for="CreatePartnerModel.Sagf_Eteb_Ngd_TarafHesab" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item" id="b-location">
+            <h2>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="true" aria-controls="panelsStayOpen-collapseFour">
+                    شعبات
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                <div class="accordion-body row" id="branches">
+                    <div class="table-responsive">
+                        <table class="table table-bordered " style="white-space: nowrap;" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>نام شعبه</th>
+                                    <th>نام مسئول</th>
+                                    <th>استان</th>
+                                    <th>شهر</th>
+                                    <th>تلفن</th>
+                                    <th>فکس</th>
+                                    <th>آدرس</th>
+                                    <th>کد پستی</th>
+                                    <th>ایمیل</th>
+                                    <th>آدرس جغرافیایی</th>
+                                    <th>-</th>
+                                </tr>
+                            </thead>
+                            <tbody id="branchTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="branch">
+                        <div class="branch-container row">
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>نام شعبه : </b></label>
+                                <input class="form-control" type="text" id="Name_Branch">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>نام مسئول شعبه : </b></label>
+                                <input class="form-control" type="text" id="Name_responsible">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="region"><b>استان : </b></label>
+                                <select id="branchRegionSelect" class="form-control">
+                                    <option value="1">انتخاب نشده</option>
+                                    @foreach (Region r in @Model.Regions)
+                                    {
+                                        <option value="@r.ID_tbl_Ostan">@r.Name_Ostan</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="city"><b>شهر : </b></label>
+                                <select id="branchCitySelect" class="form-control">
+                                    <option value="1">انتخاب نشده</option>
+                                    @foreach (City c in Model.Cities)
+                                    {
+                                        <option value="@c.ID_tbl_SharOstan">@c.Name_SharOstan</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>تلفن : </b></label>
+                                <input class="form-control" type="text" id="Tell">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>شماره فکس : </b></label>
+                                <input class="form-control" type="text" id="Fax">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>آدرس : </b></label>
+                                <input class="form-control" type="text" id="Address">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>کد پستی : </b></label>
+                                <input class="form-control" type="text" id="CodePosti">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="tel"><b>ایمیل : </b></label>
+                                <input class="form-control" type="text" id="Email">
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label><b>محل جغرافیایی: </b></label>
+                                <label id="branch-location">-</label>
+                                <input class="form-control" type="hidden" id="BranchLocation">
+                                <button type="button" class="btn btn-primary" onclick="openBranchMap()">انتخاب از روی نقشه</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <span class="btn btn-primary" id="add-branch" onclick="addBranch()">ثبت شعبه</span>
+            </div>
+        </div>
+    </div>
+    <div class="text-danger" asp-validation-summary="All"></div>
+    @* <input class="btn btn-primary" type="submit" value="ثبت" OnClientClick="DisableHiddenValidators()" />
+    <a class="btn btn-danger" asp-page="/partnership/index" asp-page-handler="OnGet">انصراف</a> *@
+<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+    <div class="w-full h-full d-flex" style="height: 100%; ">
+        <div class="w-50 d-flex justify-content-center" style="height: 100%; align-items: center;">
+            <a style="color: red; text-decoration: none;" asp-page="/partnership/index" asp-page-handler="OnGet">انصراف</a>
+        </div>
+
+        <div class="w-50 d-flex justify-content-center" style="height: 100%; align-items: center;">
+            <input class="btn btn-success " style="height: 60%; width:80%" type="submit" value="ثبت" OnClientClick="DisableHiddenValidators()" />
+        </div>
+
+    </div>
+</div>
+</form>
+
+
+<br />
+
+<div id="map-container" disabled>
+    <h3 style="color: maroon">
+        <strong>انتخاب آدرس طرف حساب از روی نقشه</strong>
+        <span>
+            <button class="btn btn-danger" onclick="$('#map-container').fadeOut('slow');">X</button>
+        </span>
+    </h3>
+
+    <div id="map"></div>
+</div>
+
+
+<br />
+<div id="branch-map-container">
+    <h4>
+        <strong>انتخاب آدرس شعبه از روی نقشه</strong>
+        <span>
+            <button class="btn btn-danger" onclick="$('#branch-map-container').fadeOut('slow');">X</button>
+        </span>
+    </h4>
+    <div id="branch-map"></div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="AddNewJobModal" tabindex="-1" aria-labelledby="BranchLocationModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">افزودن شغل</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="tel"><b>عنوان شغل : </b></label>
+                <input class="form-control" type="text" id="NewJobTitle">
+                <span class="text-danger" id="AddNewJobError"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="AddNewJob()">ثبت شغل</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="AddNewGroupModal" tabindex="-1" aria-labelledby="BranchLocationModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">افزودن گروه</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="tel"><b>عنوان گروه : </b></label>
+                <input class="form-control" type="text" id="NewGroupTitle">
+                <span class="text-danger" id="AddNewGroupError"></span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="AddNewGroup()">ثبت گروه</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Script{
+    <script>
+
+
+        const map = new L.Map("map", {
+            key: "web.b6257f3b40df46b69ee962222be7a46a",
+            maptype: "neshan",
+            poi: true,
+            traffic: false,
+            center: [35.701021, 51.390755],
+            zoom: 16,
+        }).locate({ setView: true, maxZoom: 16 });
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent(`شما روی ${e.latlng.lat} - ${e.latlng.lng} کلیک کردید.` + `<button class='btn btn-info' data-bs-dismiss='modal' onclick='SetMasterLocation(${e.latlng.lat}, ${e.latlng.lng})'>انتخاب این مکان جغرافیایی</button>`)
+                .openOn(map);
+            removeMarkers();
+            addMarker(e.latlng.lat, e.latlng.lng);
+        }
+
+        map.on('click', onMapClick);
+
+
+        const branchMap = new L.Map("branch-map", {
+            key: "web.b6257f3b40df46b69ee962222be7a46a",
+            maptype: "neshan",
+            poi: true,
+            traffic: false,
+            center: [0.0, 0.0],
+            zoom: 16,
+        }).locate({ setView: true, maxZoom: 16 });
+
+        var branchPopup = L.popup();
+
+        function onBranchMapClick(e) {
+            branchPopup
+                .setLatLng(e.latlng)
+                .setContent(`شما روی ${e.latlng.lat} - ${e.latlng.lng} کلیک کردید.` + `<button class='btn btn-info' data-bs-dismiss='modal' onclick='SetBranchLocation(${e.latlng.lat}, ${e.latlng.lng})'>انتخاب این مکان جغرافیایی</button>`)
+                .openOn(branchMap);
+            removeMarkers();
+            var icon = new L.Icon.Default();
+            icon.options.shadowSize = [0, 0];
+            var marker = new L.Marker([e.latlng.lat, e.latlng.lng], { icon: icon }).addTo(branchMap);
+        }
+
+        branchMap.on('click', onBranchMapClick);
+
+        $("#branch-map-container").fadeOut("slow");
+        $("#map-container").fadeOut("slow");
+
+        function addMarker(lat, lng) {
+            if (lat != 0 && lng != 0) {
+                var icon = new L.Icon.Default();
+                icon.options.shadowSize = [0, 0];
+                var marker = new L.Marker([lat, lng], { icon: icon }).addTo(map);
+            }
+        }
+
+        function removeMarkers() {
+            $(".leaflet-marker-icon").remove();
+        }
+
+
+        function openMasterMap() {
+            //var latlngs = [
+            //    [35.701021, 51.390755],
+            //    [35.700596, 51.391063],
+            //    [35.698122, 51.391498],
+            //    [35.698366, 51.402349],
+            //    [35.698117, 51.404651],
+            //    [35.700682, 51.405102]
+            //];
+
+            //var polyline = L.polyline(latlngs, { color: 'red' }).addTo(map);
+
+            //// zoom the map to the polyline
+            //map.fitBounds(polyline.getBounds());
+
+
+            $("#map-container").fadeIn("slow");
+            $('html, body').animate({ scrollTop: $('#map-container').offset().top }, 'slow');
+
+            if (document.getElementById("master-location").innerText != "") {
+                let latlng = document.getElementById("master-location").innerText.split(",");
+                let lat = +latlng[0];
+                let lng = +latlng[1];
+
+                removeMarkers();
+                addMarker(lat, lng);
+            }
+
+           
+        }
+
+        function openBranchMap() {
+            $("#branch-map-container").fadeIn("slow");
+            $('html, body').animate({ scrollTop: $('#branch-map-container').offset().top }, 'slow');
+
+            removeMarkers();
+            if (document.getElementById("branch-location").innerText != "") {
+                let latlng = document.getElementById("branch-location").innerText.split(",");
+                let lat = +latlng[0];
+                let lng = +latlng[1];
+
+                var icon = new L.Icon.Default();
+                icon.options.shadowSize = [0, 0];
+                var marker = new L.Marker([lat, lng], { icon: icon }).addTo(branchMap);
+            }
+        }
+
+        function AddNewJob() {
+            let jobTitle = $("#NewJobTitle").val();
+            if (jobTitle === "") {
+                document.getElementById("AddNewJobError").innerText = "عنوان شغل نمیتواند خالی باشد";
+            }
+            else {
+                $.post("@configuration["BasePath"]/api/job/" + jobTitle, function (result) {
+                    console.log(result);
+                    if (result === true) {
+                        alert("شغل جدید با موفقیت ثبت شد.");
+                        $.getJSON("@configuration["BasePath"]/api/job", function (data) {
+                            location.reload();
+                        });
+                    }
+                });
+            }
+        }
+
+
+        function AddNewGroup() {
+            let groupTitle = $("#NewGroupTitle").val();
+            if (groupTitle === "") {
+                document.getElementById("AddNewGroupError").innerText = "عنوان گروه نمیتواند خالی باشد";
+            }
+            else {
+                $.post("@configuration["BasePath"]/api/Partner/add-new-partner-group/" + groupTitle, function (result) {
+                    console.log(result);
+                    if (result === true) {
+                        alert("گروه جدید با موفقیت ثبت شد.");
+                        $.getJSON("@configuration["BasePath"]/api/Partner/get-all-partner-groups", function (data) {
+                            location.reload();
+                        });
+                    }
+                });
+            }
+        }
+
+        var latitude = 0;
+        var longtitude = 0;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                latitude = position.coords.latitude;
+                longtitude = position.coords.longitude;
+
+                //if ($("#CreatePartnerModel_Location_TarafHesab").val() == "") {
+                //    SetMasterLocation(latitude, longtitude);
+                //}
+
+                //if ($("#BranchLocation").val() == "") {
+                //    SetBranchLocation(latitude, longtitude);
+                //}
+
+                L.circle([latitude, longtitude], {
+                    color: 'white',
+                    fillColor: '#0099ff',
+                    fillOpacity: 0.4,
+                    radius: 30
+                }).addTo(map);
+
+                L.circle([latitude, longtitude], {
+                    color: 'white',
+                    fillColor: '#0099ff',
+                    fillOpacity: 0.4,
+                    radius: 30
+                }).addTo(branchMap);
+            });
+        }
+        else {
+            alert("محل جغرافیایی در این مرورگر پشتیبانی نمیشود");
+        }
+
+
+        function SetMasterLocation(lat, lng) {
+            $("#CreatePartnerModel_Location_TarafHesab").val(`${lat},${lng}`);
+            document.getElementById("master-location").innerText = `${lat},${lng}`;
+            alert("آدرس انتخابی شما ثبت شد.");
+            $('html, body').animate({ scrollTop: $('#top-location').offset().top }, 'slow');
+            $("#map-container").fadeOut("slow");
+           
+        }
+
+
+        function SetBranchLocation(lat, lng) {
+            $("#BranchLocation").val(`${lat},${lng}`);
+            document.getElementById("branch-location").innerText = `${lat},${lng}`;
+            alert("آدرس انتخابی شما ثبت شد.");
+            $('html, body').animate({ scrollTop: $('#b-location').offset().top }, 'slow');
+            $("#branch-map-container").fadeOut("slow");
+            
+        }
+
+        function SetCityNameById(id, elementId) {
+            $.getJSON("@configuration["BasePath"]/location/get-city-name-by-id/" + id, function (data) {
+                document.getElementById(elementId).innerText = data.name;
+            });
+        }
+
+        function SetRegionNameById(id, elementId) {
+            $.getJSON("@configuration["BasePath"]/location/get-region-name-by-id/" + id, function (data) {
+                document.getElementById(elementId).innerText = data.name;
+            });
+        }
+
+
+        $("#regionSelect").change(function () {
+            var regionid = $('#regionSelect').find(":selected").val();
+            $.getJSON(`@configuration["BasePath"]/Location/GetCities?regionId=${regionid}`, function (data) {
+                var select = $('#citySelect');
+                select.empty();
+                select.append('<option value="1">انتخاب نشده</option>')
+                $.each(data, function (index, value) {
+                    select.append('<option value="' + data[index].iD_tbl_SharOstan + '">' + data[index].name_SharOstan + '</option>');
+                });
+            });
+        })
+
+        $("#branchRegionSelect").change(function () {
+            var regionid = $('#branchRegionSelect').find(":selected").val();
+            $.getJSON(`@configuration["BasePath"]/Location/GetCities?regionId=${regionid}`, function (data) {
+                var select = $('#branchCitySelect');
+                select.empty();
+                select.append('<option value="1">انتخاب نشده</option>')
+                $.each(data, function (index, value) {
+                    select.append('<option value="' + data[index].iD_tbl_SharOstan + '">' + data[index].name_SharOstan + '</option>');
+                });
+            });
+        })
+
+        const branches = [];
+
+        function addBranch() {
+            //
+            // deifning variables to append to table
+            var name = $('#Name_Branch').val();
+
+            var responsibleName = $('#Name_responsible').val();
+
+            var regionId = $('#branchRegionSelect').val();
+            var region = $("#branchRegionSelect option:selected").text();
+            $('#branchRegionSelect').val(1);
+
+            var cityId = $('#branchCitySelect').val();
+            var city = $('#branchCitySelect option:selected').text();
+            $('#branchCitySelect').val(1);
+
+            var phoneNumber = $('#Tell').val();
+
+            var fax = $('#Fax').val();
+
+            var address = $('#Address').val();
+
+            var postalCode = $('#CodePosti').val();
+
+            var email = $('#Email').val();
+
+            var branchLocation = $("#BranchLocation").val();
+            //
+            //
+
+            if (name == "") 
+            {
+                alert("نام شعبه نمتواند خالی باشد");
+                document.getElementById("Name_Branch").focus();
+                return;
+            }
+            if (responsibleName == "") 
+            {
+                alert("نام مسئول شعبه نمیتواند خالی باشد");
+                document.getElementById("Name_responsible").focus();
+                return;
+            }
+            if (address == "") 
+            {
+                alert("آدرس شعبه نمیتواند خالی باشد");
+                document.getElementById("Address").focus();
+                return;
+            }
+
+            if (name != "")
+            {
+                if (responsibleName != "")
+                {
+                    if (address != "") {
+                        const branch = {
+                            Name_Branch: name,
+                            Name_responsible: responsibleName,
+                            ID_tbl_Ostan: regionId,
+                            ID_tbl_SharOstan: cityId,
+                            Tell: phoneNumber,
+                            Fax: fax,
+                            Address: address,
+                            CodePosti: postalCode,
+                            Email: email,
+                            BranchLocation: branchLocation
+                        };
+
+                        branches.push(branch);
+
+                        document.getElementById("branchTableBody").innerHTML = "";
+                        reloadBranchTable();
+                    }
+                }
+            }
+
+            $('#Name_Branch').val("");
+            $('#Name_responsible').val("");
+
+            var region = $("#branchRegionSelect option:selected").text();
+            $('#branchRegionSelect').val(1);
+
+            var city = $('#branchCitySelect option:selected').text();
+            $('#branchCitySelect').val(1);
+            $('#Tell').val("");
+            $('#Fax').val("");
+            $('#Address').val("");
+            $('#CodePosti').val("");
+            $('#Email').val("");
+            $("#BranchLocation").val("");
+            document.getElementById("branch-location").innerText = "";
+        }
+
+        function update(c, id) 
+        {
+            //addBranch();
+            $('#Name_Branch').val($(c).find('.BranchName_Branch').val());
+
+            $('#Name_responsible').val($(c).find('.BranchName_responsible').val());
+
+            $('#branchRegionSelect').val(branches[id].ID_tbl_Ostan);
+
+            $('#branchCitySelect').val(branches[id].ID_tbl_SharOstan);
+
+            $('#Tell').val($(c).find('.BranchTell').val());
+
+            $('#Fax').val($(c).find('.BranchFax').val());
+
+            $('#Address').val($(c).find(".BranchAddress").val());
+
+            $('#CodePosti').val($(c).find(".BranchCodePosti").val());
+
+            $('#Email').val($(c).find(".BranchEmail").val());
+
+            $("#BranchLocation").val($(c).find(".BranchLocation").val());
+            document.getElementById("branch-location").innerText = $("#BranchLocation").val();
+
+            let cityId = branches[id].ID_tbl_SharOstan;
+            $.getJSON(`@configuration["BasePath"]/Location/GetCities?regionId=${branches[id].ID_tbl_Ostan}`, function (data) {
+                var select = $('#branchCitySelect');
+                select.empty();
+                select.append('<option value="1">انتخاب نشده</option>')
+                $.each(data, function (index, value) {
+                    let res = data[index].iD_tbl_SharOstan === cityId;
+                    let selected = "";
+                    if (res) {
+                        selected = "selected";
+                    }
+                    select.append('<option ' + selected + ' value="' + data[index].iD_tbl_SharOstan + '">' + data[index].name_SharOstan + '</option>');
+                });
+            });
+            deletebranch(id);
+        }
+        function deletebranch(id) {
+            removeItemAtIndex(branches, id);
+            var row = document.getElementById(id);
+            row.parentNode.removeChild(row);
+
+            document.getElementById("branchTableBody").innerHTML = '';
+            reloadBranchTable();
+        }
+
+
+        function reloadBranchTable() {
+            for (let index = 0; index < branches.length; index++) {
+                var html = `<tr id='${index}'>
+                                                                                                 <td><input class="BranchName_Branch" type="hidden" name="CreatePartnerModel.Branches[${index}].Name_Branch" value="${branches[index].Name_Branch}">
+                                                                                                     <span>${branches[index].Name_Branch}</span>
+                                                                                 </td>
+
+                                                                                                 <td><input class="BranchName_responsible" type="hidden" name="CreatePartnerModel.Branches[${index}].Name_responsible" value="${branches[index].Name_responsible}">
+                                                                                                     <span>${branches[index].Name_responsible}</span>
+                                                                                 </td>
+
+                                                                                         <td><input class="BranchRegionSelect" type="hidden" name="CreatePartnerModel.Branches[${index}].ID_tbl_Ostan" value="${branches[index].ID_tbl_Ostan}">
+                                                                                             <span id="region_${branches[index].ID_tbl_Ostan}"></span>
+                                                                                 </td>
+
+                                                                                                 <td><input class="BranchCitySelect" type="hidden" name="CreatePartnerModel.Branches[${index}].ID_tbl_SharOstan" value="${branches[index].ID_tbl_SharOstan}">
+                                                                                                     <span id="city_${branches[index].ID_tbl_SharOstan}"></span>
+                                                                                 </td>
+
+                                                                                                         <td><input class="BranchTell" type="hidden" name="CreatePartnerModel.Branches[${index}].Tell"  value="${branches[index].Tell}">
+                                                                                             <span>${branches[index].Tell}</span>
+                                                                                 </td>
+
+                                                                                                         <td><input class="BranchFax" type="hidden" name="CreatePartnerModel.Branches[${index}].Fax" value=${branches[index].Fax}>
+                                                                                     <span>${branches[index].Fax}</span>
+                                                                                 </td>
+
+                                                                                                 <td><input class="BranchAddress" type="hidden" name="CreatePartnerModel.Branches[${index}].Address" value=${branches[index].Address}>
+                                                                                             <span>${branches[index].Address}</span>
+                                                                                 </td>
+
+                                                                                                 <td><input class="BranchCodePosti" type="hidden" name="CreatePartnerModel.Branches[${index}].CodePosti" value=${branches[index].CodePosti}>
+                                                                                             <span>${branches[index].CodePosti}</span>
+                                                                                 </td>
+
+                                                                                                         <td><input class="BranchEmail" type="hidden" name="CreatePartnerModel.Branches[${index}].Email" value="${branches[index].Email}">
+                                                                                                      <span>${branches[index].Email}</span>
+                                                                                 </td>
+
+                                                                                <td>
+                                                                                                <input class="BranchLocation" type="hidden" name="CreatePartnerModel.Branches[${index}].Location_Branch" value="${branches[index].BranchLocation}">
+                                                                               <span>${branches[index].BranchLocation}</span>
+                                                                                </td>
+                                                                                                                 <td><span class="btn btn-danger" onclick="deletebranch(${index});">حذف</span> |
+                                                                                  <span class="btn btn-info" onclick="update($(this).closest('tr'), ${index})">ویرایش</span></td>
+                                                                                </tr>`;
+                $('#branchTableBody').append(html);
+                SetCityNameById(branches[index].ID_tbl_SharOstan, "city_" + branches[index].ID_tbl_SharOstan);
+                SetRegionNameById(branches[index].ID_tbl_Ostan, "region_" + branches[index].ID_tbl_Ostan);
+            }
+        }
+
+        function DisableHiddenValidators() {
+            for (var i = 0; i < Page_Validators.length; i++) {
+                var visible = $('#' + Page_Validators[i].controltovalidate).is(':visible');
+                ValidatorEnable(Page_Validators[i], visible)
+            }
+            return Page_ClientValidate();
+        }
+
+
+        function removeItemAtIndex(array, index) {
+            if (index > -1 && index < array.length) {
+                array.splice(index, 1);
+            }
+            return array;
+        }
+
+    </script>
+
+}

@@ -1,0 +1,23 @@
+﻿@font-face {
+    font-family: "vazir";
+    src: url(/fonts/VAZIRMATN-REGULAR.TTF) format('truetype');
+}
+
+html{
+    font-size: 20px;
+}
+
+
+body {
+    font-family: vazir !important;
+    direction: rtl;
+    background-color: whitesmoke;
+    
+}
+.visited, .visited td {
+    background-color: #e4ffe4;
+}
+
+.accordion-item {
+    margin: 7px;
+}

@@ -1,0 +1,45 @@
+﻿@page "{SessionId}"
+@model SaysanPwa.Api.Pages.ReceiptSheet.Check.AddCheckModel
+@{
+    Layout = "";
+}
+
+<form method="post" id="add-check-form">
+
+    <div class="form-group">
+        <label>شماره چک: </label>
+        <input asp-for="CheckDto.CheckNumber" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>مبلغ چک: </label>
+        <input asp-for="CheckDto.CheckAmount" class="form-control" value="0" />
+    </div>
+
+    <div class="form-group">
+        <label>پشت نمره: </label>
+        <input asp-for="CheckDto.BehindTheCheckMark" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>سریال: </label>
+        <input asp-for="CheckDto.Series" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>تاریخ سررسید: </label>
+        <input asp-for="CheckDto.DuDate" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label>شرح: </label>
+        <textarea class="form-control" asp-for="CheckDto.Description">
+        </textarea>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="All"></div>
+
+    <hr />
+
+    <button type="button" class="btn btn-success" onclick="SubmitAddCheck()">ثبت دریافت چک</button>
+</form>

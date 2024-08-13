@@ -1,0 +1,87 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Product;
+@model SaysanPwa.Api.Pages.Products.IndexModel;
+@{
+}
+
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+@foreach (ProductDto p in Model.PageResult.Result)
+{
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.Code_Kala')" type="button" >
+                    نام کالا: @p.Name_Kala - کد کالا: @p.Code_Kala
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapse-@p.Code_Kala" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr><th>مبلغ فروش: </th><td>@p.Price_Forosh_Kala</td></tr>
+                            <tr><th>سازنده: </th><td>@p.Sazande_Kala</td></tr>
+                            <tr><th>گروه کالا: </th><td>@p.Ful_Bach_Nam</td></tr>
+                            <tr><th>شرایط اشانتیون: </th><td>-</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btn-group dropend">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            ...
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" asp-page="/Products/Detail" asp-route-Id="@p.ID_tbl_Kala">جزئیات</a></li>
+                            <li><a class="dropdown-item" asp-page="/Products/SmallPurchaseOfGoods" asp-route-ProductId="@p.ID_tbl_Kala" asp-route-ProductName="@p.Name_Kala.Replace(" ", "-")">ریز خرید کالا</a></li>
+                            <li><a class="dropdown-item" asp-page="/Products/RetailSaleOfGoods" asp-route-ProductId="@p.ID_tbl_Kala" asp-route-ProductName="@p.Name_Kala.Replace(" ", "-")">ریز فروش کالا</a></li>
+                            <li><a class="dropdown-item" asp-page="/Products/SmallPurchaseAndSaleOfGoods" asp-route-ProductId="@p.ID_tbl_Kala" asp-route-Name="@p.Name_Kala.Replace(" ", "-")">ریز خرید و فروش کالا</a></li>
+                            <li><a class="dropdown-item" href="#">موجودی کالا با تفکیک انبار (تعدادی)</a></li>
+                            <li><a class="dropdown-item" href="#">موجودی کالا به تفکیک انبار (تعدادی - ریالی)</a></li>
+                            <li><a class="dropdown-item" href="#">تجمیع فروش کالا به تفکیک مشتری</a></li>
+                            <li><a class="dropdown-item" asp-page="/Products/ProfitWithGoods" asp-route-ProductId="@p.ID_tbl_Kala" asp-route-ProductName="@p.Name_Kala.Replace(" ", "-")">سود با کالا</a></li>
+                            <li><a class="dropdown-item" href="#">جوایز جنسی کالا</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+}
+</div>
+
+
+<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+    <div class="w-full h-full d-flex" style="height: 100%; ">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+                <form method="get" asp-page="/Products/Index" id="page-form">
+                    <input type="hidden" value="@Model.CurrentPage" name="CurrentPage" id="CurrentPage" />
+                </form>
+                @for (int index = 0; index < Model.PageResult.PageInfo.TotalPage; index++)
+                {
+                    <button type="button" class="btn btn-outline-primary @(index == Model.PageResult.PageInfo.CurrentPage ? "active" : "")" onclick="changePage(@index)">@(index + 1)</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Script
+    {
+    <script src="/lib/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleDisplay(id) {
+            var div = document.getElementById(id);
+            if (div.style.display !== 'none') {
+                div.style.display = 'none';
+            } else {
+                div.style.display = 'block';
+            }
+        }
+
+        function changePage(id) {
+            $("#CurrentPage").val(id);
+            $("#page-form").submit();
+        }
+    </script>
+}

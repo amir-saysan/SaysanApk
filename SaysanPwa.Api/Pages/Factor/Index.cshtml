@@ -1,0 +1,110 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Factor;
+@model SaysanPwa.Api.Pages.Factor.IndexModel
+@inject SaysanPwa.Domain.AggregateModels.UserAggregate.IUserRepository _Userrep;
+@using System.Security.Claims
+
+@{
+	int userid = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+	ViewBag.Title = "لیست پیش فاکتور فروش";
+	var dRow_List = await _Userrep.GetUserPermission("itmApk_ShowAll_ListFactors", userid);
+	var dRow_Insert = await _Userrep.GetUserPermission("itmApk_InsertPishForosh", userid);
+}
+
+@{
+	if (dRow_List)
+	{
+		<div class="card">
+			<div class="card-header">فیلتر ها</div>
+			<div class="card-body">
+				<form asp-page="/Factor/Index" method="get" id="page-form">
+					<input type="hidden" asp-for="CurrentPage" />
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+							<label>از تاریخ: </label>
+							<input class="form-control" asp-for="From" data-jdp data-jdp-max-date="today" />
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+							<label>تا تاریخ: </label>
+							<input class="form-control" asp-for="To" data-jdp data-jdp-max-date="today" />
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+							<br />
+							<button type="submit" class="btn btn-success" onclick="PostDateFactor()">جستجو</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+	}
+}
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+	@foreach (FactorDto p in Model.PageResult.Result)
+	{
+		decimal jk = p.JM_PF + p.JAv_PF;
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.N_PF')" type="button">
+					شماره فاکتور : @p.N_PF- طرف حساب  : @p.Name_TarafHesab
+				</button>
+			</h2>
+			<div id="panelsStayOpen-collapse-@p.N_PF" class="accordion-collapse collapse">
+				<div class="accordion-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr><th>شماره فاکتور : </th><td>@p.N_PF</td></tr>
+							<tr><th>تاریخ : </th><td>@p.Dt_PF</td></tr>
+							<tr><th>جمع تخفیفات  : </th><td>@p.Tkh_A_PF.ToString("n0")</td></tr>
+							<tr><th>مالیات و عوارض  : </th><td>@jk.ToString("n0")</td></tr>
+							<tr><th>مبلغ قابل پرداخت : </th><td>@p.J_PF.ToString("n0")</td></tr>
+							<tr><th>شرح   : </th><td>@p.Dc_PF</td></tr>
+						</tbody>
+					</table>
+
+					<div class="btn-group dropend">
+						<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							...
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" asp-page="/Factor/print" asp-route-PishFactorId="@p.ID_tbl_PF" asp-route-Id="@p.N_PF">چاپ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
+
+@{
+	if (dRow_Insert)
+	{
+		<div class="fixed-bottom w-full" style=" height: 4rem; background-color: white; border-top: 1px solid rgb(163, 163, 163)">
+			<div class="w-full d-flex justify-content-center" style="height: 100%; align-items: center;">
+				<a class="btn btn-success" style="height: 60%; width:80%;" asp-page="/Factor/AddPreFactor">پیش فاکتور فروش جدید</a>
+			</div>
+		</div>
+	}
+}
+
+@section Script
+{
+	<script src="/lib/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function toggleDisplay(id) {
+			var div = document.getElementById(id);
+			if (div.style.display !== 'none') {
+				div.style.display = 'none';
+			} else {
+				div.style.display = 'block';
+			}
+		}
+
+		function PostDateFactor(id) {
+			$("#CurrentPage").val(id);
+			$("#page-form").submit();
+		}
+	</script>
+}

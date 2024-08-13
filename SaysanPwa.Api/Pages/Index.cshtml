@@ -1,0 +1,145 @@
+﻿@page
+@model MyApp.Namespace.IndexModel
+@{
+}
+
+<div class="container my-3">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+    @if (TempData["CustomMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["CustomMessage"]
+        </div>
+    }
+    <div class="row justify-content-center g-3">
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            @* <a href="/Partnership"> *@
+            <a asp-page="/partnership/index" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/customer.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        طرفحساب ها
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="/Products" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/icons8-products-pile-96.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        کالا ها
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="factor" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/icons8-bullet-list-96.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        پیش فاکتور فروش
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="/SalesFactor" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/icons8-bullet-list-96.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        فاکتور فروش
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="/ServiceSaleFactor" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/invoice.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        فاکتور فروش خدمت
+                    </p>
+                </div>
+            </a>
+        </div>
+           
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="/ReturnedInvoice" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/invoice.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        فاکتور برگشتی 
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="/ReceiptSheet" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/receipt-colorized.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        رسید دریافت
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center  ">
+            <a href="" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/icons8-pie-chart-80.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        گزارشات
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="/visitpath" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/map.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        مسیر های ویزیت
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+            <a href="" class="text-decoration-none">
+                <div class="card" style="min-width: 8rem; height:8rem; ">
+                    <img src="/images/dashboard.png" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+                    <p>
+                        داشبورد مدیریت
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        @*
+        //Box template
+        <div class=" col-md-3 col-sm-6 col-6 text-center ">
+        <a href="" class="text-decoration-none">
+        <div class="card" style="min-width: 8rem; height:8rem; ">
+        <img src="/images/S_Logo2.ico" style="width: 4rem; height: 4rem; margin: 10px auto" alt="">
+        <p>
+        افزودن کالای جدید
+        </p>
+        </div>
+        </a>
+        </div>
+        *@
+
+
+    </div>
+</div>
