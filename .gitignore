@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/SaysanPwa/FileContentIndex
+/SaysanPwa.Api/obj/Debug/net7.0
+/SaysanPwa.Application/obj/Debug/net7.0
+/SaysanPwa.Domain/obj/Debug/net7.0
+/SaysanPwa.Infrastructure/obj/Debug/net7.0
