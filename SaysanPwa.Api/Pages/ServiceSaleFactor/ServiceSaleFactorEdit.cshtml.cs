@@ -76,7 +76,7 @@ namespace SaysanPwa.Api.Pages.ServiceSaleFactor
 			var result = await _mediator.Send(_mapper.Map<EditServiceSaleFactorCommand>(EditServiceSaleFactorDto));
 			if (result.Succeeded)
 			{
-				TempData["Status"] = "?????? ???? ?? ?????? ????? ??.";
+				TempData["Status"] = "Update Successed";
 				return Redirect("/ServiceSaleFactor/AddFactor");
 			}
 			else
