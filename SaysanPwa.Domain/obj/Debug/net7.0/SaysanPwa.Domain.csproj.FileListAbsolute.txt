@@ -100,3 +100,16 @@ E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Domain\obj\Debug\net7.0\SaysanP
 E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Domain\obj\Debug\net7.0\refint\SaysanPwa.Domain.dll
 E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.pdb
 E:\mp\project\Saysan\Github6\SaysanPwa\SaysanPwa.Domain\obj\Debug\net7.0\ref\SaysanPwa.Domain.dll
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\bin\Debug\net7.0\SaysanPwa.Domain.deps.json
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\bin\Debug\net7.0\SaysanPwa.Domain.dll
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\bin\Debug\net7.0\SaysanPwa.Domain.pdb
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.csproj.AssemblyReference.cache
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.AssemblyInfoInputs.cache
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.AssemblyInfo.cs
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.csproj.CoreCompileInputs.cache
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.sourcelink.json
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.dll
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\refint\SaysanPwa.Domain.dll
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.pdb
+E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\ref\SaysanPwa.Domain.dll

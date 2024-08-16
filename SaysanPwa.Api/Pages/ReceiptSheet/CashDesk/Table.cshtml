@@ -3,6 +3,7 @@
 @model SaysanPwa.Api.Pages.ReceiptSheet.CashDesk.TableModel
 @{
     Layout = "";
+    var date = SaysanPwa.Application.Utilities.DateAndTime.DateTimeExtensions.ConvertMiladiToShamsi(DateTime.Now, "yyyy/MM/dd");
 }
 
 <table class="table table-bordered table-striped">
@@ -22,7 +23,7 @@
             {
                 <tr>
                     <td>@item.CashDeskId</td>
-                    <td>@DateTime.Now.ToString("yyyy/MM/dd", new CultureInfo("fa_IR"))</td>
+                    <td>@date</td>
                     <td>@item.Price.ToString("N0")</td>
                     <td>@item.Description</td>
                     <td>

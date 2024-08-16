@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Saysan Ap\\SaysanApk\\",
+  "WorkspaceRootPath": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|d:\\saysan ap\\saysanapk\\saysanpwa.api\\pages\\factor\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|solutionrelative:saysanpwa.api\\pages\\factor\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|e:\\mp\\project\\saysan\\github8\\saysanapk\\saysanpwa.api\\pages\\receiptsheet\\remittances\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|solutionrelative:saysanpwa.api\\pages\\receiptsheet\\remittances\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71527AB3-BB72-4C7F-9CCE-7BD4DD425C80}|SaysanPwa.Infrastructure\\SaysanPwa.Infrastructure.csproj|d:\\saysan ap\\saysanapk\\saysanpwa.infrastructure\\repositories\\factorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{71527AB3-BB72-4C7F-9CCE-7BD4DD425C80}|SaysanPwa.Infrastructure\\SaysanPwa.Infrastructure.csproj|solutionrelative:saysanpwa.infrastructure\\repositories\\factorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|e:\\mp\\project\\saysan\\github8\\saysanapk\\saysanpwa.api\\pages\\receiptsheet\\posmachine\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|solutionrelative:saysanpwa.api\\pages\\receiptsheet\\posmachine\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|d:\\saysan ap\\saysanapk\\saysanpwa.api\\pages\\factor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|solutionrelative:saysanpwa.api\\pages\\factor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|e:\\mp\\project\\saysan\\github8\\saysanapk\\saysanpwa.api\\pages\\receiptsheet\\check\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|solutionrelative:saysanpwa.api\\pages\\receiptsheet\\check\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A29FE6B7-7871-42BB-B93C-54F1DF43CCD9}|SaysanPwa.Domain\\SaysanPwa.Domain.csproj|d:\\saysan ap\\saysanapk\\saysanpwa.domain\\aggregatemodels\\factor\\factor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A29FE6B7-7871-42BB-B93C-54F1DF43CCD9}|SaysanPwa.Domain\\SaysanPwa.Domain.csproj|solutionrelative:saysanpwa.domain\\aggregatemodels\\factor\\factor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|e:\\mp\\project\\saysan\\github8\\saysanapk\\saysanpwa.api\\pages\\receiptsheet\\cashdesk\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{693E26C3-1455-4756-8863-29AEBB39FE60}|SaysanPwa.Api\\SaysanPwa.Api.csproj|solutionrelative:saysanpwa.api\\pages\\receiptsheet\\cashdesk\\table.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4429E20-8C97-4179-B0C1-298C05A2AD42}|SaysanPwa.Application\\SaysanPwa.Application.csproj|d:\\saysan ap\\saysanapk\\saysanpwa.application\\dtos\\factor\\factordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4429E20-8C97-4179-B0C1-298C05A2AD42}|SaysanPwa.Application\\SaysanPwa.Application.csproj|solutionrelative:saysanpwa.application\\dtos\\factor\\factordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71527AB3-BB72-4C7F-9CCE-7BD4DD425C80}|SaysanPwa.Infrastructure\\SaysanPwa.Infrastructure.csproj|e:\\mp\\project\\saysan\\github8\\saysanapk\\saysanpwa.infrastructure\\repositories\\receiptsheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71527AB3-BB72-4C7F-9CCE-7BD4DD425C80}|SaysanPwa.Infrastructure\\SaysanPwa.Infrastructure.csproj|solutionrelative:saysanpwa.infrastructure\\repositories\\receiptsheetrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +30,75 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FactorDto.cs",
-              "DocumentMoniker": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\DTOs\\Factor\\FactorDto.cs",
-              "RelativeDocumentMoniker": "SaysanPwa.Application\\DTOs\\Factor\\FactorDto.cs",
-              "ToolTip": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\DTOs\\Factor\\FactorDto.cs",
-              "RelativeToolTip": "SaysanPwa.Application\\DTOs\\Factor\\FactorDto.cs",
-              "ViewState": "AQIAADEAAAAAAAAAAAAcwEMAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T05:03:21.048Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Factor.cs",
-              "DocumentMoniker": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\AggregateModels\\Factor\\Factor.cs",
-              "RelativeDocumentMoniker": "SaysanPwa.Domain\\AggregateModels\\Factor\\Factor.cs",
-              "ToolTip": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\AggregateModels\\Factor\\Factor.cs",
-              "RelativeToolTip": "SaysanPwa.Domain\\AggregateModels\\Factor\\Factor.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwBMAAAA5AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T05:02:02.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Api\\Pages\\Factor\\Index.cshtml",
-              "RelativeDocumentMoniker": "SaysanPwa.Api\\Pages\\Factor\\Index.cshtml",
-              "ToolTip": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Api\\Pages\\Factor\\Index.cshtml",
-              "RelativeToolTip": "SaysanPwa.Api\\Pages\\Factor\\Index.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAADkAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-13T04:58:25.115Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Api\\Pages\\Factor\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "SaysanPwa.Api\\Pages\\Factor\\Index.cshtml.cs",
-              "ToolTip": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Api\\Pages\\Factor\\Index.cshtml.cs",
-              "RelativeToolTip": "SaysanPwa.Api\\Pages\\Factor\\Index.cshtml.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAQwCMAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:58:18.31Z",
+              "Title": "Table.cshtml",
+              "DocumentMoniker": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\Remittances\\Table.cshtml",
+              "RelativeDocumentMoniker": "SaysanPwa.Api\\Pages\\ReceiptSheet\\Remittances\\Table.cshtml",
+              "ToolTip": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\Remittances\\Table.cshtml",
+              "RelativeToolTip": "SaysanPwa.Api\\Pages\\ReceiptSheet\\Remittances\\Table.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T07:28:43.346Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FactorRepository.cs",
-              "DocumentMoniker": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Infrastructure\\Repositories\\FactorRepository.cs",
-              "RelativeDocumentMoniker": "SaysanPwa.Infrastructure\\Repositories\\FactorRepository.cs",
-              "ToolTip": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Infrastructure\\Repositories\\FactorRepository.cs",
-              "RelativeToolTip": "SaysanPwa.Infrastructure\\Repositories\\FactorRepository.cs",
-              "ViewState": "AQIAAJsAAAAAAAAAAAAYwLEAAAACAAAA",
+              "Title": "Table.cshtml",
+              "DocumentMoniker": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\PosMachine\\Table.cshtml",
+              "RelativeDocumentMoniker": "SaysanPwa.Api\\Pages\\ReceiptSheet\\PosMachine\\Table.cshtml",
+              "ToolTip": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\PosMachine\\Table.cshtml",
+              "RelativeToolTip": "SaysanPwa.Api\\Pages\\ReceiptSheet\\PosMachine\\Table.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T07:28:08.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Table.cshtml",
+              "DocumentMoniker": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\CashDesk\\Table.cshtml",
+              "RelativeDocumentMoniker": "SaysanPwa.Api\\Pages\\ReceiptSheet\\CashDesk\\Table.cshtml",
+              "ToolTip": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\CashDesk\\Table.cshtml",
+              "RelativeToolTip": "SaysanPwa.Api\\Pages\\ReceiptSheet\\CashDesk\\Table.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T07:26:53.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Table.cshtml",
+              "DocumentMoniker": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\Check\\Table.cshtml",
+              "RelativeDocumentMoniker": "SaysanPwa.Api\\Pages\\ReceiptSheet\\Check\\Table.cshtml",
+              "ToolTip": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Api\\Pages\\ReceiptSheet\\Check\\Table.cshtml",
+              "RelativeToolTip": "SaysanPwa.Api\\Pages\\ReceiptSheet\\Check\\Table.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAACAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-08-14T07:26:46.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReceiptSheetRepository.cs",
+              "DocumentMoniker": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Infrastructure\\Repositories\\ReceiptSheetRepository.cs",
+              "RelativeDocumentMoniker": "SaysanPwa.Infrastructure\\Repositories\\ReceiptSheetRepository.cs",
+              "ToolTip": "E:\\mp\\project\\Saysan\\Github8\\SaysanApk\\SaysanPwa.Infrastructure\\Repositories\\ReceiptSheetRepository.cs",
+              "RelativeToolTip": "SaysanPwa.Infrastructure\\Repositories\\ReceiptSheetRepository.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAUwCoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-13T04:40:30.779Z",
+              "WhenOpened": "2024-08-14T07:17:03.103Z",
               "EditorCaption": ""
             }
           ]

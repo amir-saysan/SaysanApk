@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace SaysanPwa.Application.Query.ReceiptSheet;
 
-public class GetReceiptSheetPrintQuery : IRequest<List<ReceiptSheetBaseDto>>
+public class GetReceiptSheetPrintQuery : IRequest<List<GetReceiptSheetDto>>
 {
 	public long? ID_tbl_DA { get; set; }
 	public long? fiscalYear { get; set; }
@@ -30,7 +30,7 @@ public class GetReceiptSheetPrintQuery : IRequest<List<ReceiptSheetBaseDto>>
 	}
 }
 
-public class GetReceiptSheetPrintQueryHanelr : IRequestHandler<GetReceiptSheetPrintQuery, List<ReceiptSheetBaseDto>>
+public class GetReceiptSheetPrintQueryHanelr : IRequestHandler<GetReceiptSheetPrintQuery, List<GetReceiptSheetDto>>
 {
 	private readonly IReceiptSheetRepository _repo;
 	private readonly IMapper _mapper;
@@ -41,10 +41,10 @@ public class GetReceiptSheetPrintQueryHanelr : IRequestHandler<GetReceiptSheetPr
 		_mapper = mapper;
 	}
 
-	public async Task<List<ReceiptSheetBaseDto>> Handle(GetReceiptSheetPrintQuery request, CancellationToken cancellationToken)
+	public async Task<List<GetReceiptSheetDto>> Handle(GetReceiptSheetPrintQuery request, CancellationToken cancellationToken)
 	{
 		List<Domain.AggregateModels.ReceiptSheetAggregate.ReceiptSheet> Factor = await _repo.GetReceiptSheetPrint(request.ID_tbl_DA, request.fiscalYear, request.UserId, request.Offset, request.Date1, request.Date2);
-		List<ReceiptSheetBaseDto> result = _mapper.Map<List<ReceiptSheetBaseDto>>(Factor);
+		List<GetReceiptSheetDto> result = _mapper.Map<List<GetReceiptSheetDto>>(Factor);
 		return result;
 	}
 }

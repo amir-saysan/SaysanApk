@@ -20,7 +20,7 @@ namespace SaysanPwa.Api.Pages.ReceiptSheet
 
         [FromQuery]
         public int? FiscalYear { get; set; } = 0;
-        public PageResult<List<ReceiptSheetBaseDto>?> PageResult { get; set; } = new();
+        public PageResult<List<GetReceiptSheetDto>?> PageResult { get; set; } = new();
 
         public async Task OnGet(int Id)
         {

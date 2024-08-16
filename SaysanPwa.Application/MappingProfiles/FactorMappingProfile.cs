@@ -53,7 +53,7 @@ public class FactorMappingProfile : Profile
 		CreateMap< EditServiceSaleFactorCommand, SaleServiceFactor> ();
 		CreateMap<EditServiceSaleFactorDto, EditServiceSaleFactorCommand>();
 
-		CreateMap<ReceiptSheet, ReceiptSheetBaseDto>();
+		CreateMap<ReceiptSheet, GetReceiptSheetDto>();
 
 	}
 }

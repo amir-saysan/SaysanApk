@@ -29,7 +29,7 @@ namespace SaysanPwa.Api.Pages.ReceiptSheet
 		[FromQuery]
 		public string? To { get; set; }
 
-		public PageResult<List<ReceiptSheetBaseDto>?> PageResult { get; set; } = new();
+		public PageResult<List<GetReceiptSheetDto>?> PageResult { get; set; } = new();
 
 
 		public async Task OnGet()

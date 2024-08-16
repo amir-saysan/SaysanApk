@@ -31,7 +31,7 @@ public class ReceiptSheetRepository : IReceiptSheetRepository
             SqlTransaction transaction = connection.BeginTransaction();
             try
             {
-                if (int.Parse(tbl_DA.Dt_DA.Substring(0,4))!=1402)
+                if (int.Parse(tbl_DA.Dt_DA.Substring(0,4))!=1403)
                 {
                     return new(false, false, new List<string> { "!تاریخ دریافت نامعتبر می باشد" });
                 }

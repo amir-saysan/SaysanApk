@@ -4,11 +4,11 @@
 @using SaysanPwa.Application;
 @model SaysanPwa.Api.Pages.ReceiptSheet.PrintModel
 @{
-	ViewBag.Title = "رسید دریافت";
-	Layout = null;
-	int RowCount = 1;
-	DateTime dateTime = DateTime.Now;
-	var dateToday = DateTimeExtensions.ConvertMiladiToShamsi(dateTime, "yyyy/MM/dd");
+    ViewBag.Title = "رسید دریافت";
+    Layout = null;
+    int RowCount = 1;
+    DateTime dateTime = DateTime.Now;
+    var dateToday = DateTimeExtensions.ConvertMiladiToShamsi(dateTime, "yyyy/MM/dd");
 }
 
 
@@ -16,304 +16,304 @@
 <html lang="fa" dir="rtl">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title</title>
-	<link rel="stylesheet" href="/lib/css/bootstrap.rtl.min.css" />
-	<link rel="stylesheet" href="/css/font.css" />
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="/lib/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="/css/font.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		@@page {
-			size: A4;
-			margin: 0;
-		}
+        @@page {
+            size: A4;
+            margin: 0;
+        }
 
-		html,
-		body {
-			width: 210mm;
-			height: 297mm;
-			margin: 0;
-			padding: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-family: "vazir";
-			font-size: 12px;
-		}
+        html,
+        body {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "vazir";
+            font-size: 12px;
+        }
 
-		.content {
-			width: 90%;
-			height: 90%;
-			padding: 10px;
-			box-sizing: border-box;
-			background-color: transparent;
-		}
+        .content {
+            width: 90%;
+            height: 90%;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: transparent;
+        }
 
-		.section-title {
-			background-color: #eaeaea;
-			border: 1px solid;
-			padding: 8px 8px;
-			border-radius: 2px;
-		}
+        .section-title {
+            background-color: #eaeaea;
+            border: 1px solid;
+            padding: 8px 8px;
+            border-radius: 2px;
+        }
 
-		.logo-img {
-			width: 120px;
-		}
+        .logo-img {
+            width: 120px;
+        }
 
-		.border-transparent {
-			border: transparent;
-		}
+        .border-transparent {
+            border: transparent;
+        }
 
-		.border-bottom-hidden {
-			border-bottom-style: hidden;
-		}
+        .border-bottom-hidden {
+            border-bottom-style: hidden;
+        }
 
-		table {
-			border: 2px solid #000;
-		}
+        table {
+            border: 2px solid #000;
+        }
 
-		.tr-title {
-			background-color: rgb(190, 176, 110) !important;
-			font-weight: bold;
-		}
+        .tr-title {
+            background-color: rgb(190, 176, 110) !important;
+            font-weight: bold;
+        }
 
-		thead tr th {
-			color: green !important;
-			text-align: center;
-		}
-	</style>
+        thead tr th {
+            color: green !important;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
-	<input type="hidden" asp-for="PageResult.Result.FirstOrDefault().SessionId" />
-	<div class="content">
-		<div class="row">
-			@* 	<div class="col-12 text-center">
-			<h5><b> شرکت 1 </b></h5>
-			</div> *@
-			<div class="col-12 text-center">
-				<h5><b> @ViewBag.Title </b></h5>
-			</div>
-			<div class="col-4 align-self-center">
-				@* <img src="~/images/logo-black.png" class="logo-img" /> *@
-				<div class="mt-2"><b> طرف حساب: </b><span> @Model.PageResult.Result.FirstOrDefault().Name_TarafHesab </span></div>
-				<div class="mt-2"><b> شرح: </b><span> @Model.PageResult.Result.FirstOrDefault().Dc_DA	 </span></div>
-			</div>
-			<div class="col-4"></div>
-			<div class="col-4 align-self-center">
-				<div class="mt-2"><b> شماره رسید: </b><span> @Model.PageResult.Result.FirstOrDefault().ID_tbl_DA </span></div>
-				<div class="mt-2"><b> تاریخ رسید: </b><span> @Model.PageResult.Result.FirstOrDefault().Dt_DA </span></div>
-			</div>
-		</div>
+    <input type="hidden" asp-for="PageResult.Result.FirstOrDefault().SessionId" />
+    <div class="content">
+        <div class="row">
+            @* 	<div class="col-12 text-center">
+            <h5><b> شرکت 1 </b></h5>
+            </div> *@
+            <div class="col-12 text-center">
+                <h5><b> @ViewBag.Title </b></h5>
+            </div>
+            <div class="col-4 align-self-center">
+                @* <img src="~/images/logo-black.png" class="logo-img" /> *@
+                <div class="mt-2"><b> طرف حساب: </b><span>@Model.PageResult.Result.FirstOrDefault().Name_TarafHesab</span></div>
+                <div class="mt-2"><b> شرح: </b><span>@Model.PageResult.Result.FirstOrDefault().Dc_DA</span></div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4 align-self-center">
+                <div class="mt-2"><b> شماره رسید: </b><span>@Model.PageResult.Result.FirstOrDefault().ID_tbl_DA</span></div>
+                <div class="mt-2"><b> تاریخ رسید: </b><span>@Model.PageResult.Result.FirstOrDefault().Dt_DA</span></div>
+            </div>
+        </div>
 
-		<div class="row mt-4">
-			<table class="table table-bordered">
-				<thead>
-					<tr>
-						<th>ردیف</th>
-						<th>شماره</th>
-						<th>تاریخ</th>
-						<th>صندوق / بانک</th>
-						<th>شرح</th>
-						<th>مبلغ</th>
-					</tr>
-				</thead>
-				<tbody>
-					@{
-						int chekh = 0;
-						int hav = 0;
-						int hesab = 0;
-						int sandog = 0;
-						int kart = 0;
-						foreach (var item in Model.PageResult.Result)
-						{
-							if (item.Typee == "چک ها")
-							{
-								chekh = chekh + 1;
-							}
-							if (item.Typee == "حواله ها")
-							{
-								hav = hav + 1;
-							}
-							if (item.Typee == "سایر حسابها")
-							{
-								hesab = hesab + 1;
-							}
-							if (item.Typee == "صندوق")
-							{
-								sandog = sandog + 1;
-							}
-							if (item.Typee == "کارتخوان ها")
-							{
-								kart = kart + 1;
-							}
-						}
+        <div class="row mt-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ردیف</th>
+                        <th>شماره</th>
+                        <th>تاریخ</th>
+                        <th>صندوق / بانک</th>
+                        <th>شرح</th>
+                        <th>مبلغ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int chekh = 0;
+                        int hav = 0;
+                        int hesab = 0;
+                        int sandog = 0;
+                        int kart = 0;
+                        foreach (var item in Model.PageResult.Result)
+                        {
+                            if (item.Typee == "چک ها")
+                            {
+                                chekh = chekh + 1;
+                            }
+                            if (item.Typee == "حواله ها")
+                            {
+                                hav = hav + 1;
+                            }
+                            if (item.Typee == "سایر حسابها")
+                            {
+                                hesab = hesab + 1;
+                            }
+                            if (item.Typee == "صندوق")
+                            {
+                                sandog = sandog + 1;
+                            }
+                            if (item.Typee == "کارتخوان ها")
+                            {
+                                kart = kart + 1;
+                            }
+                        }
 
-					}
-					@{
-						if (chekh > 0)
-						{
-							<tr class="border-transparent border-bottom-hidden">
-								<td colspan="6" class="tr-title"> چک ها </td>
-							</tr>
+                    }
+                    @{
+                        if (chekh > 0)
+                        {
+                            RowCount = 1;
+                            <tr class="border-transparent border-bottom-hidden">
+                                <td colspan="6" class="tr-title"> چک ها </td>
+                            </tr>
 
-							foreach (var item in Model.PageResult.Result)
-							{
-								if (item.Typee == "چک ها")
-								{
-									<tr class="border-transparent border-bottom-hidden">
-										<td>@RowCount</td>
-										<td>@item.ID_tbl_DA</td>
-										<td>@item.Dt_DA</td>
-										<td>@item.Number_Hesab</td>
-										<td></td>
-										<td>@item.J_DA.ToString("n0")</td>
-									</tr>
-									RowCount = RowCount + 1;
-								}
-							}
-						}
-					}
-					@{
-						if (hav > 0)
-						{
-							<tr class="border-transparent border-bottom-hidden">
-								<td colspan="6" class="tr-title"> حواله ها </td>
-							</tr>
+                            foreach (var item in Model.PageResult.Result)
+                            {
+                                if (item.Typee == "چک ها")
+                                {
+                                    <tr class="border-transparent border-bottom-hidden">
+                                        <td>@RowCount</td>
+                                        <td>@item.ID_tbl_DA</td>
+                                        <td>@item.Dt_DA</td>
+                                        <td>@item.Number_Hesab</td>
+                                        <td></td>
+                                        <td>@item.J_DA.ToString("n0")</td>
+                                    </tr>
+                                    RowCount = RowCount + 1;
+                                }
+                            }
+                        }
+                    }
+                    @{
+                        if (hav > 0)
+                        {
+                            RowCount = 1;
+                            <tr class="border-transparent border-bottom-hidden">
+                                <td colspan="6" class="tr-title"> حواله ها </td>
+                            </tr>
 
-							foreach (var item in Model.PageResult.Result)
-							{
-								RowCount = 1;
-								if (item.Typee == "حواله ها")
-								{
-									<tr class="border-transparent border-bottom-hidden">
-										<td>@RowCount</td>
-										<td>@item.ID_tbl_DA</td>
-										<td>@item.Dt_DA</td>
-										<td> @item.Number_Hesab </td>
-										<td></td>
-										<td>@item.J_DA.ToString("n0")</td>
-									</tr>
-									RowCount = RowCount + 1;
-								}
-							}
-						}
-					}
-					@{
-						if (hesab > 0)
-						{
-							<tr class="border-transparent border-bottom-hidden">
-								<td colspan="6" class="tr-title"> سایر حساب ها </td>
-							</tr>
-							foreach (var item in Model.PageResult.Result)
-							{
-								RowCount = 1;
-								if (item.Typee == "سایر حسابها")
-								{
-									<tr class="border-transparent border-bottom-hidden">
-										<td>@RowCount</td>
-										<td>@item.ID_tbl_DA</td>
-										<td>@item.Dt_DA</td>
-										<td> @item.Number_Hesab </td>
-										<td></td>
-										<td>@item.J_DA.ToString("n0")</td>
-									</tr>
-									RowCount = RowCount + 1;
-								}
-							}
-						}
-					}
-					@{
-						if (sandog > 0)
-						{
-							<tr class="border-transparent border-bottom-hidden">
-								<td colspan="6" class="tr-title"> صندوق </td>
-							</tr>
-							foreach (var item in Model.PageResult.Result)
-							{
-								RowCount = 1;
-								if (item.Typee == "صندوق")
-								{
-									<tr class="border-transparent border-bottom-hidden">
-										<td>@RowCount</td>
-										<td>@item.ID_tbl_DA</td>
-										<td>@item.Dt_DA</td>
-										<td> @item.Number_Hesab </td>
-										<td></td>
-										<td>@item.J_DA.ToString("n0")</td>
-									</tr>
-									RowCount = RowCount + 1;
-								}
+                            foreach (var item in Model.PageResult.Result)
+                            {
+                                if (item.Typee == "حواله ها")
+                                {
+                                    <tr class="border-transparent border-bottom-hidden">
+                                        <td>@RowCount</td>
+                                        <td>@item.ID_tbl_DA</td>
+                                        <td>@item.Dt_DA</td>
+                                        <td> @item.Number_Hesab </td>
+                                        <td></td>
+                                        <td>@item.J_DA.ToString("n0")</td>
+                                    </tr>
+                                    RowCount = RowCount + 1;
+                                }
+                            }
+                        }
+                    }
+                    @{
+                        if (hesab > 0)
+                        {
+                            RowCount = 1;
+                            <tr class="border-transparent border-bottom-hidden">
+                                <td colspan="6" class="tr-title"> سایر حساب ها </td>
+                            </tr>
+                            foreach (var item in Model.PageResult.Result)
+                            {
+                                if (item.Typee == "سایر حسابها")
+                                {
+                                    <tr class="border-transparent border-bottom-hidden">
+                                        <td>@RowCount</td>
+                                        <td>@item.ID_tbl_DA</td>
+                                        <td>@item.Dt_DA</td>
+                                        <td> @item.Number_Hesab </td>
+                                        <td></td>
+                                        <td>@item.J_DA.ToString("n0")</td>
+                                    </tr>
+                                    RowCount = RowCount + 1;
+                                }
+                            }
+                        }
+                    }
+                    @{
+                        if (sandog > 0)
+                        {
+                            RowCount = 1;
+                            <tr class="border-transparent border-bottom-hidden">
+                                <td colspan="6" class="tr-title"> صندوق </td>
+                            </tr>
+                            foreach (var item in Model.PageResult.Result)
+                            {
+                                if (item.Typee == "صندوق")
+                                {
+                                    <tr class="border-transparent border-bottom-hidden">
+                                        <td>@RowCount</td>
+                                        <td>@item.ID_tbl_DA</td>
+                                        <td>@item.Dt_DA</td>
+                                        <td> @item.Number_Hesab </td>
+                                        <td></td>
+                                        <td>@item.J_DA.ToString("n0")</td>
+                                    </tr>
+                                    RowCount = RowCount + 1;
+                                }
 
-							}
-						}
-					}
+                            }
+                        }
+                    }
 
-					@{
-						if (kart > 0)
-						{
-							<tr class="border-transparent border-bottom-hidden">
-								<td colspan="6" class="tr-title"> کارتخوان ها </td>
-							</tr>
-							foreach (var item in Model.PageResult.Result)
-							{
-								RowCount = 1;
-								if (item.Typee == "کارتخوان ها")
-								{
-									<tr class="border-transparent border-bottom-hidden">
-										<td>@RowCount</td>
-										<td>@item.ID_tbl_DA</td>
-										<td>@item.Dt_DA</td>
-										<td> @item.Number_Hesab </td>
-										<td></td>
-										<td>@item.J_DA.ToString("n0")</td>
-									</tr>
-									RowCount = RowCount + 1;
-								}
-							}
-						}
-					}
+                    @{
+                        if (kart > 0)
+                        {
+                            RowCount = 1;
+                            <tr class="border-transparent border-bottom-hidden">
+                                <td colspan="6" class="tr-title"> کارتخوان ها </td>
+                            </tr>
+                            foreach (var item in Model.PageResult.Result)
+                            {
+                                if (item.Typee == "کارتخوان ها")
+                                {
+                                    <tr class="border-transparent border-bottom-hidden">
+                                        <td>@RowCount</td>
+                                        <td>@item.ID_tbl_DA</td>
+                                        <td>@item.Dt_DA</td>
+                                        <td> @item.Number_Hesab </td>
+                                        <td></td>
+                                        <td>@item.J_DA.ToString("n0")</td>
+                                    </tr>
+                                    RowCount = RowCount + 1;
+                                }
+                            }
+                        }
+                    }
 
-					@{
-						decimal Sum = 0;
-						foreach (var item in Model.PageResult.Result)
-						{
-							Sum = Sum + item.J_DA;
-						}
-					}
-					<tr>
-						<td colspan="4"><b> جمع دریافت به حروف: </b><span>  </span></td>
-						<td colspan="2"><b> جمع دریافت: </b><span> @Sum.ToString("n0") </span></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="row mt-3">
-			<div class="col-6 text-center">
-				<b> مهر و امضاء دریافت کننده </b>
-			</div>
-			<div class="col-6 text-center">
-				<b> مهر و امضاء پرداخت کننده </b>
-			</div>
-		</div>
-	</div>
+                    @{
+                        decimal Sum = 0;
+                        foreach (var item in Model.PageResult.Result)
+                        {
+                            Sum = Sum + item.J_DA;
+                        }
+                    }
+                    <tr>
+                        <td colspan="4"><b> جمع دریافت به حروف: </b><span>  </span></td>
+                        <td colspan="2"><b> جمع دریافت: </b><span> @Sum.ToString("n0") </span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row mt-3">
+            <div class="col-6 text-center">
+                <b> مهر و امضاء دریافت کننده </b>
+            </div>
+            <div class="col-6 text-center">
+                <b> مهر و امضاء پرداخت کننده </b>
+            </div>
+        </div>
+    </div>
 
-	<script src="/lib/js/bootstrap.min.js"></script>
-	<script src="/lib/jquery/jquery.min.js"></script>
-	<script>
-		$(document).ready(function () {
-			window.print();
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/lib/jquery/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            window.print();
 
-			$("table tr.border-bottom-hidden:last").removeClass("border-bottom-hidden");
-		});
+            $("table tr.border-bottom-hidden:last").removeClass("border-bottom-hidden");
+        });
 
-
-	</script>
+    </script>
 
 </body>
 
