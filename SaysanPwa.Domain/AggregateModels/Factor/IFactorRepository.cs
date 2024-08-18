@@ -24,6 +24,8 @@ public interface IFactorRepository : IRepository<Factor>
 	Task<List<ReturnedInvoice>> GetReturnedFactorPrint(long? ForoshID, long? fiscalYear, int? UserId, int? Offset, int? ID_tbl_Bzy, string? Date1, string? Date2, object parameters = null!, CancellationToken cancellationToken = default);
 	Task<List<SaleServiceFactorDetailViewModel>> GetServiceSaleFactorDetailAsync(long id, int SalMalyId, CancellationToken cancellationToken = default);
     Task<SysResult<bool>> EditSaleServiceFactor(SaleServiceFactor saleServiceFactor, IEnumerable<ServiceFactorItem> factorItems, CancellationToken cancellationToken = default);
+    Task<List<TaxSale>> GetAllSaleFactorsMoadian(int fiscalYear, int UserId, string Date1, string Date2, CancellationToken cancellationToken = default);
+    Task<List<TaxSale>> GetAllSaleFactorsMoadianSendList(int fiscalYear, int UserId, string Date1, string Date2, CancellationToken cancellationToken = default);
 }
 
 public enum TypeCallProcedure

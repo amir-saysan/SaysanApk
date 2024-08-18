@@ -1,0 +1,201 @@
+﻿@page
+@using SaysanPwa.Application.DTOs.Factor;
+@model SaysanPwa.Api.Pages.SalesFactorMoadian.IndexModel;
+@inject SaysanPwa.Domain.AggregateModels.UserAggregate.IUserRepository _Userrep;
+@using System.Security.Claims
+
+@{
+	int userid = Convert.ToInt32(User.FindFirstValue(ClaimTypes.NameIdentifier));
+	ViewBag.Title = "لیست اطلاعات  سامانه مودیان فاکتور فروش";
+	var dRow_List = await _Userrep.GetUserPermission("itmApk_ShowAll_ListFactors", userid);
+	var dRow_Insert = await _Userrep.GetUserPermission("itmApk_InsertForosh", userid);
+}
+
+
+
+<div class="card">
+	<div class="card-header">فیلتر ها</div>
+	<div class="card-body">
+		<form asp-page="/SalesFactorMoadian/Index" method="get" id="page-form">
+			<input type="hidden" asp-for="CurrentPage" />
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+					<label>از تاریخ: </label>
+					<input class="form-control" asp-for="From" data-jdp data-jdp-max-date="today" />
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+					<label>تا تاریخ: </label>
+					<input class="form-control" asp-for="To" data-jdp data-jdp-max-date="today" />
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-12">
+					<br />
+					<button type="submit" class="btn btn-success" onclick="PostDateFactorMoadian()">جستجو</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<div class="row">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item" role="presentation">
+			<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#notsend" type="button" role="tab" aria-controls="home" aria-selected="true">اطلاعات ارسال نشده</button>
+		</li>
+		<li class="nav-item" role="presentation">
+			<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#issend" type="button" role="tab" aria-controls="profile" aria-selected="false">اطلاعات ارسال شده</button>
+		</li>
+
+	</ul>
+
+	<div class="tab-content" id="myTabContent">
+
+		<div class="tab-pane fade show active" id="notsend" role="tabpanel" aria-labelledby="home-tab">
+
+
+
+			<div class="accordion" id="notsendfactor">
+				@foreach (TaxSaleDto p in Model.PageResult.Result)
+				{
+					<form method="post">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.N_F')" type="button">
+									تاریخ : @p.Dt_F - طرف حساب  : @p.Name_TarafHesab -مبلغ:@p.J_F
+								</button>
+							</h2>
+							<div id="panelsStayOpen-collapse-@p.N_F" class="accordion-collapse collapse">
+								<div class="accordion-body">
+									<table class="table table-bordered">
+										<tbody>
+											<tr><th>شماره فاکتور : </th><td>@p.N_F</td></tr>
+											<tr><th>تاریخ : </th><td>@p.Dt_F</td></tr>
+											<tr><th>مبلغ: </th><td>@p.J_F.ToString("n0")</td></tr>
+											<tr><th>جمع تخفیفات  : </th><td>@p.Tkh_A_F.ToString("n0")</td></tr>
+											<tr><th> مالیات و عوارض  : </th><td>@p.JM_F.ToString("n0")</td></tr>
+											<tr><th> شرح   : </th><td>@p.Dc_F</td></tr>
+										</tbody>
+									</table>
+									<div class="row">
+										<div class="col-sm-4">
+											<label><b>نوع صورت حساب : </b></label>
+											<select class="form-control">
+												<option value="نوع اول" selected>نوع اول</option>
+												<option value="نوع دوم">نوع دوم</option>
+											</select>
+										</div>
+
+										<div class="col-sm-4">
+											<label><b>نوع عملکرد : </b></label>
+											<select class="form-control">
+												<option value="ارسال" selected>ارسال</option>
+												<option value="ابطال">ابطال</option>
+											</select>
+										</div>
+										<div class="col-sm-4" style="margin-top:18px; text-align:center;">
+											<button type="submit" class="btn btn-secondary dropdown-toggle" asp-page-handler="SendFactor">ارسال</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<input hidden name="TaxSaleListsentDto.N_F" value="@p.N_F" />
+						<input hidden name="TaxSaleListsentDto.Name_TarafHesab" value="@p.Name_TarafHesab" />
+						<input hidden name="TaxSaleListsentDto.Dt_F" value="@p.Dt_F" />
+						<input hidden name="TaxSaleListsentDto.Dc_F" value="@p.Dc_F" />
+						<input hidden name="TaxSaleListsentDto.JM_F" value="@p.JM_F" />
+						<input hidden name="TaxSaleListsentDto.Tkh_A_F" value="@p.Tkh_A_F" />
+						<input hidden name="TaxSaleListsentDto.J_F" value="@p.J_F" />
+
+					</form>
+
+				}
+			</div>
+		</div>
+		<div class="tab-pane fade" id="issend" role="tabpanel" aria-labelledby="profile-tab">
+			<div class="accordion" id="issendfactor">
+				@foreach (TaxSaleDto p in Model.TaxSaleListsentDto)
+				{
+					<form method="post">
+						<div class="accordion-item">
+							<h2 class="accordion-header">
+								<button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.N_F')" type="button">
+									تاریخ : @p.Dt_F - طرف حساب  : @p.Name_TarafHesab -مبلغ:@p.J_F
+								</button>
+							</h2>
+							<div id="panelsStayOpen-collapse-@p.N_F" class="accordion-collapse collapse">
+								<div class="accordion-body">
+									<table class="table table-bordered">
+										<tbody>
+											<tr><th>شماره فاکتور : </th><td>@p.N_F</td></tr>
+											<tr><th>تاریخ : </th><td>@p.Dt_F</td></tr>
+											<tr><th>مبلغ: </th><td>@p.J_F.ToString("n0")</td></tr>
+											<tr><th>جمع تخفیفات  : </th><td>@p.Tkh_A_F.ToString("n0")</td></tr>
+											<tr><th> مالیات و عوارض  : </th><td>@p.JM_F.ToString("n0")</td></tr>
+											<tr><th> شرح   : </th><td>@p.Dc_F</td></tr>
+										</tbody>
+									</table>
+
+
+									<div class="row">
+										<div class="col-sm-4">
+											<label><b>نوع صورت حساب : </b></label>
+											<select class="form-control">
+												<option value="نوع اول" selected>نوع اول</option>
+												<option value="نوع دوم">نوع دوم</option>
+											</select>
+										</div>
+
+										<div class="col-sm-4">
+											<label><b>نوع عملکرد : </b></label>
+											<select class="form-control">
+												<option value="ارسال" selected>ارسال</option>
+												<option value="ابطال">ابطال</option>
+											</select>
+										</div>
+										<div class="col-sm-4" style="margin-top:18px; text-align:center;">
+											<button type="submit" class="btn btn-secondary dropdown-toggle" asp-page-handler="ResultPost">استعلام</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<input hidden name="TaxSaleListsentDto.N_F" value="@p.N_F" />
+						<input hidden name="TaxSaleListsentDto.Name_TarafHesab" value="@p.Name_TarafHesab" />
+						<input hidden name="TaxSaleListsentDto.Dt_F" value="@p.Dt_F" />
+						<input hidden name="TaxSaleListsentDto.Dc_F" value="@p.Dc_F" />
+						<input hidden name="TaxSaleListsentDto.JM_F" value="@p.JM_F" />
+						<input hidden name="TaxSaleListsentDto.Tkh_A_F" value="@p.Tkh_A_F" />
+						<input hidden name="TaxSaleListsentDto.J_F" value="@p.J_F" />
+					</form>
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+@section Script
+{
+	<script src="/lib/js/bootstrap.bundle.min.js"></script>
+	<script>
+		function toggleDisplay(id) {
+			var div = document.getElementById(id);
+			if (div.style.display !== 'none') {
+				div.style.display = 'none';
+			} else {
+				div.style.display = 'block';
+			}
+		}
+
+		function PostDateFactorMoadian(id) {
+			$("#CurrentPage").val(id);
+			$("#page-form").submit();
+		}
+	</script>
+}

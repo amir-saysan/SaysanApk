@@ -31,7 +31,7 @@ namespace SaysanPwa.Domain.AggregateModels.ReceiptSheetAggregate
 		public string Typee { get; set; }
 		public string Number_Hesab { get; set; }
 		public decimal J_DA_AZ { get; set; }
-		public decimal Desc_S1 { get; set; }
+		public string Desc_S1 { get; set; }
 
 		//public string tbl_TarafHesab.Name_TarafHesab { get; set; } //طرفحساب دریافت 
 		//public string tbl_Users.Username { get; set; } //نام کاربر ثبت کننده سیتم 

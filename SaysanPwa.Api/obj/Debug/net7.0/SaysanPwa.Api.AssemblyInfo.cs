@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaysanPwa.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cce136e92864cfa4a2fb438a3653383e43587802")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+995546a61c819bcf10abe4bacfa03b9712f19154")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaysanPwa.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaysanPwa.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

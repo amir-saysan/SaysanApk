@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using SaysanPwa.Application.DTOs.Factor;
 using SaysanPwa.Application.Utilities.DateAndTime;
 using SaysanPwa.Domain.AggregateModels.Factor;
 using SaysanPwa.Domain.AggregateModels.FiscalYear;
@@ -2940,5 +2941,47 @@ public class FactorRepository : IFactorRepository
 				return new(false, false, new List<string> { ex.Message });
 			}
 		}
+	}
+
+	////////////////////////////// سامانه مودیان
+	public async Task<List<TaxSale>> GetAllSaleFactorsMoadian(int fiscalYear, int UserId, string Date1, string Date2, CancellationToken cancellationToken = default)
+	{
+		IEnumerable<TaxSale> partners = Enumerable.Empty<TaxSale>();
+		try
+		{
+			long? Id_tbl = 0;
+
+			string dtt = "AND Dt_F BETWEEN '" + Date1 + "' AND '" + Date2 + "'";
+
+			//IEnumerable<TaxSale>  Factor = await _dbManager.CallProcedureWithParametersAsync<TaxSale>("Apk_Proc_tbl_Samane_Moadayan", new
+			partners = await _dbManager.CallProcedureWithParametersAsync<TaxSale>("Apk_Proc_tbl_Samane_Moadayan", new
+			{
+				Type_Call_Proc = "List_F_NotSend",
+				ID_tbl_SalMaly = fiscalYear,
+				Where_Query = dtt,
+				ID_tbl = Id_tbl,
+			});
+			return new(partners);
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex.Message);
+			return new(partners);
+		}
+
+	}
+
+	public async Task<List<TaxSale>> GetAllSaleFactorsMoadianSendList(int fiscalYear, int UserId, string Date1, string Date2, CancellationToken cancellationToken = default)
+	{
+		long? Id_tbl = 0;
+		string dtt = "AND Dt_F BETWEEN '" + Date1 + "' AND '" + Date2 + "'";
+		IEnumerable<TaxSale> Factor = await _dbManager.CallProcedureWithParametersAsync<TaxSale>("Apk_Proc_tbl_Samane_Moadayan", new
+		{
+			Type_Call_Proc = "List_F_Send",
+			ID_tbl_SalMaly = fiscalYear,
+			Where_Query = dtt,
+			ID_tbl = Id_tbl,
+		});
+		return new(Factor);
 	}
 }

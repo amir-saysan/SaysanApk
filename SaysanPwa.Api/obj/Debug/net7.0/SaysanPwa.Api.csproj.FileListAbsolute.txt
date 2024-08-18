@@ -949,3 +949,4 @@ E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Api\obj\Debug\net7.0\refint\Say
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Api\obj\Debug\net7.0\SaysanPwa.Api.pdb
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Api\obj\Debug\net7.0\SaysanPwa.Api.genruntimeconfig.cache
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Api\obj\Debug\net7.0\ref\SaysanPwa.Api.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Api\obj\Debug\net7.0\SaysanPwa.Api.sourcelink.json

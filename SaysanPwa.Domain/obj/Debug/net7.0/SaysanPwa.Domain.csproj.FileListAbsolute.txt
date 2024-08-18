@@ -113,3 +113,4 @@ E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanP
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\refint\SaysanPwa.Domain.dll
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.pdb
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\ref\SaysanPwa.Domain.dll
+D:\Saysan Ap\SaysanApk\SaysanPwa.Domain\obj\Debug\net7.0\SaysanPwa.Domain.sourcelink.json
