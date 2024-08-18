@@ -55,5 +55,8 @@ public class FactorMappingProfile : Profile
 
 		CreateMap<ReceiptSheet, GetReceiptSheetDto>();
 
+
+		CreateMap<TaxSale, TaxSaleDto>();
+
 	}
 }
