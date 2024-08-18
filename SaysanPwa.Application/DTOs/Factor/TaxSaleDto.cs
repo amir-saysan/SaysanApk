@@ -40,13 +40,47 @@ public record TaxSaleDto
     public string Time_Send { get; set; }//ساعت ارسال
     public int Type_Sorathesab { get; set; }//نوع صورتحساب
     public string Type_Sorathesab1 { get; set; }//نوع صورتحساب به فارسی
-    public int Temp_Sorathesab { get; set; }//قالب صورتحساب
+												//case when Type_Sorathesab = 0 then N''''
+												//		when Type_Sorathesab = 1 then N''نوع اول''
+												//		when Type_Sorathesab = 2 then N''نوع دوم''
+												//		when Type_Sorathesab = 3 then N''نوع سوم''
+												//	end Type_Sorathesab1,--نوع صورتحساب به فارسی
+
+
+
+	public int Temp_Sorathesab { get; set; }//قالب صورتحساب
     public string Temp_Sorathesab1 { get; set; }//قالب صورتحساب به فارسی
-    public int Subject_Sorathesab { get; set; }//موضوع صورتحساب
+	//when Temp_Sorathesab = 1 then N''فروش''
+	//					when Temp_Sorathesab = 2 then N''فروش ارزی''
+	//					when Temp_Sorathesab = 3 then N''صورتحساب طلا،جواهر،پلاتین''
+	//					when Temp_Sorathesab = 4 then N''قرارداد پیمانکار''
+	//					when Temp_Sorathesab = 5 then N''قبوض خدماتی''
+	//					when Temp_Sorathesab = 6 then N''بلیط هواپیما''
+	//				end Temp_Sorathesab1,--قالب صورتحساب به فارسی
+
+
+	public int Subject_Sorathesab { get; set; }//موضوع صورتحساب
     public string Subject_Sorathesab1 { get; set; }//موضوع صورتحساب به فارسی
-    public int State_Sorathesab { get; set; }//وضعیت ارسال
+    	//				case when Subject_Sorathesab = 0 then N''''
+					//	when Subject_Sorathesab = 1 then N''اصلی''
+					//	when Subject_Sorathesab = 2 then N''اصلاحی''
+					//	when Subject_Sorathesab = 3 then N''ابطالی''
+					//end Subject_Sorathesab1,--موضوع صورتحساب به فارسی
+
+
+	public int State_Sorathesab { get; set; }//وضعیت ارسال
     public string State_Sorathesab1 { get; set; }//وضعیت ارسال به فارسی
-    public string Serial_Sorathesab { get; set; }//سریال صورتحساب
+    	//					case when State_Sorathesab = 0 then N''ارسال شده''
+					//		when State_Sorathesab = 1 then N''در حال استعلام ثبت''
+					//		when State_Sorathesab = 2 then N''در حال استعلام اصلاح''
+					//		when State_Sorathesab = 3 then N''در حال استعلام ابطال''
+					//		when State_Sorathesab = 4 then N''اصلاح شده''
+					//		when State_Sorathesab = 5 then N''ابطال شده''
+					//		when State_Sorathesab = 6 then N''آماده برای ارسال مجدد''
+					//end State_Sorathesab1,--وضعیت ارسال به فارسی
+
+
+	public string Serial_Sorathesab { get; set; }//سریال صورتحساب
     public string Sstid { get; set; }//شماره منحصر به فرد مالیاتی
     public string Sstid1 { get; set; }//شماره منحصر به فرد مالیاتی مرجع
     public string Uid { get; set; }//

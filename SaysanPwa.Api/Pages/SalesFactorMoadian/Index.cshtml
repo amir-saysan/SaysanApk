@@ -12,6 +12,13 @@
 }
 
 
+@if (TempData["Status"] != null)
+{
+	<div class="alert alert-info">
+		@((string)TempData["Status"]!)
+	</div>
+}
+
 
 <div class="card">
 	<div class="card-header">فیلتر ها</div>
@@ -78,34 +85,29 @@
 									</table>
 									<div class="row">
 										<div class="col-sm-4">
-											<label><b>نوع صورت حساب : </b></label>
-											<select class="form-control">
-												<option value="نوع اول" selected>نوع اول</option>
-												<option value="نوع دوم">نوع دوم</option>
+											<label><b>نوع صورت حساب : </b></label>@* Type_Sorathesab *@
+											<select name="TaxSaleListsentDto.Type_Sorathesab" class="form-control">
+												<option value="1" selected>نوع اول</option>
+												<option value="2">نوع دوم</option>
 											</select>
 										</div>
 
 										<div class="col-sm-4">
-											<label><b>نوع عملکرد : </b></label>
-											<select class="form-control">
-												<option value="ارسال" selected>ارسال</option>
-												<option value="ابطال">ابطال</option>
+											<label><b>نوع عملکرد : </b></label>@* Subject_Sorathesab *@
+											<select class="form-control" name="TaxSaleListsentDto.Subject_Sorathesab">
+												<option value="1" selected>ارسال</option>
+												<option value="3">ابطال</option>
 											</select>
 										</div>
 										<div class="col-sm-4" style="margin-top:18px; text-align:center;">
-											<button type="submit" class="btn btn-secondary dropdown-toggle" asp-page-handler="SendFactor">ارسال</button>
+											<button type="submit" class="btn btn-secondary" asp-page-handler="SendFactor">ارسال</button>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<input hidden name="TaxSaleListsentDto.N_F" value="@p.N_F" />
-						<input hidden name="TaxSaleListsentDto.Name_TarafHesab" value="@p.Name_TarafHesab" />
-						<input hidden name="TaxSaleListsentDto.Dt_F" value="@p.Dt_F" />
-						<input hidden name="TaxSaleListsentDto.Dc_F" value="@p.Dc_F" />
-						<input hidden name="TaxSaleListsentDto.JM_F" value="@p.JM_F" />
-						<input hidden name="TaxSaleListsentDto.Tkh_A_F" value="@p.Tkh_A_F" />
-						<input hidden name="TaxSaleListsentDto.J_F" value="@p.J_F" />
+						<input hidden name="TaxSaleListsentDto.Type_Sorathesab" value="" />
+						<input hidden name="TaxSaleListsentDto.ID_tbl_FF" value="@p.ID_tbl_FF" />
 
 					</form>
 

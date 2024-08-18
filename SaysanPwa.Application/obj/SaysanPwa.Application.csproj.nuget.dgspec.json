@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\vs\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj": {}
+    "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj": {}
   },
   "projects": {
-    "D:\\vs\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj": {
+    "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\vs\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj",
+        "projectUniqueName": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj",
         "projectName": "SaysanPwa.Application",
-        "projectPath": "D:\\vs\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj",
-        "packagesPath": "C:\\Users\\ASUS FX517ZC\\.nuget\\packages\\",
-        "outputPath": "D:\\vs\\SaysanApk\\SaysanPwa.Application\\obj\\",
+        "projectPath": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\SaysanPwa.Application.csproj",
+        "packagesPath": "C:\\Users\\Hamed\\.nuget\\packages\\",
+        "outputPath": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS FX517ZC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hamed\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,16 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "D:\\vs\\C#\\Saysan Accounting Tolidy\\Saysan_Windows\\tax": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\vs\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj": {
-                "projectPath": "D:\\vs\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj"
+              "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj": {
+                "projectPath": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj"
               }
             }
           }
@@ -88,24 +86,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\vs\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj": {
+    "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\vs\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj",
+        "projectUniqueName": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj",
         "projectName": "SaysanPwa.Domain",
-        "projectPath": "D:\\vs\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj",
-        "packagesPath": "C:\\Users\\ASUS FX517ZC\\.nuget\\packages\\",
-        "outputPath": "D:\\vs\\SaysanApk\\SaysanPwa.Domain\\obj\\",
+        "projectPath": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\SaysanPwa.Domain.csproj",
+        "packagesPath": "C:\\Users\\Hamed\\.nuget\\packages\\",
+        "outputPath": "D:\\Saysan Ap\\SaysanApk\\SaysanPwa.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS FX517ZC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hamed\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -114,8 +112,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "D:\\vs\\C#\\Saysan Accounting Tolidy\\Saysan_Windows\\tax": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -172,7 +168,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205\\RuntimeIdentifierGraph.json"
         }
       }
     }

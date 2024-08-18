@@ -2944,7 +2944,7 @@ public class FactorRepository : IFactorRepository
 	}
 
 	////////////////////////////// سامانه مودیان
-	public async Task<List<TaxSale>> GetAllSaleFactorsMoadian(int fiscalYear, int UserId, string Date1, string Date2, CancellationToken cancellationToken = default)
+	public async Task<List<TaxSale>> GetAllSaleFactorsMoadian(int fiscalYear, string Date1, string Date2, CancellationToken cancellationToken = default)
 	{
 		IEnumerable<TaxSale> partners = Enumerable.Empty<TaxSale>();
 		try
@@ -2971,7 +2971,7 @@ public class FactorRepository : IFactorRepository
 
 	}
 
-	public async Task<List<TaxSale>> GetAllSaleFactorsMoadianSendList(int fiscalYear, int UserId, string Date1, string Date2, CancellationToken cancellationToken = default)
+	public async Task<List<TaxSale>> GetAllSaleFactorsMoadianSendList(int fiscalYear , string Date1, string Date2, CancellationToken cancellationToken = default)
 	{
 		long? Id_tbl = 0;
 		string dtt = "AND Dt_F BETWEEN '" + Date1 + "' AND '" + Date2 + "'";
@@ -2983,5 +2983,11 @@ public class FactorRepository : IFactorRepository
 			ID_tbl = Id_tbl,
 		});
 		return new(Factor);
+	}
+
+	public async Task<string> GetSaleFactorsMoadianForSend(long ID_Tbl_FF, int typesorathesab, int subjectsorathesab, int ID_SalMaly, CancellationToken cancellationToken = default)
+	{
+		string res = "test";
+		return new(res);
 	}
 }

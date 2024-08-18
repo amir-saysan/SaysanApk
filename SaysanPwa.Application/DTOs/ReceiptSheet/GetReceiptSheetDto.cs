@@ -21,10 +21,6 @@ public class GetReceiptSheetDto
 	public decimal J_DA_K { get; set; } //جمع دریافت کارتخوان 
 	public decimal J_DA_Sayer { get; set; } //جمع دریافت سایر 
 	public decimal J_DA_AZ { get; set; }
-<<<<<<< HEAD
-	public string Desc_S1 { get; set; }
-=======
->>>>>>> 3750bd7 (AlterAmir)
 	public string Dc_DA { get; set; } //شرح 
 	public string Name_TarafHesab { get; set; }
 	public string Typ_DA { get; set; }

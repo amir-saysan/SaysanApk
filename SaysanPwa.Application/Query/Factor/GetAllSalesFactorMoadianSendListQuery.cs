@@ -10,14 +10,12 @@ namespace SaysanPwa.Application.Query.Factor;
 public class GetAllSalesFactorMoadianSendListQuery : IRequest<List<TaxSaleDto>>
 {
     public int FiscalYear { get; set; }
-    public int UserId { get; set; }
     public string From { get; set; }
     public string To { get; set; }
 
-    public GetAllSalesFactorMoadianSendListQuery(int fiscalYear, int userId, string Date1, string Date2)
+    public GetAllSalesFactorMoadianSendListQuery(int fiscalYear, string Date1, string Date2)
     {
         FiscalYear = fiscalYear;
-        UserId = userId;
         From = Date1;
         To = Date2;
     }
@@ -36,7 +34,7 @@ public class GetAllSalesFactorMoadianSendListQueryHandler : IRequestHandler<GetA
     }
     public async Task<List<TaxSaleDto>> Handle(GetAllSalesFactorMoadianSendListQuery request, CancellationToken cancellationToken)
     {
-        var a = await _repository.GetAllSaleFactorsMoadianSendList(request.FiscalYear, request.UserId, request.From, request.To ,cancellationToken);
+        var a = await _repository.GetAllSaleFactorsMoadianSendList(request.FiscalYear,request.From, request.To ,cancellationToken);
         List<TaxSaleDto> result = _mapper.Map<List<TaxSaleDto>>(a);
         return result;
     }

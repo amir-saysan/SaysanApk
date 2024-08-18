@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaysanPwa.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19a278bb9b815bcbe4fcd5167956df7d43635337")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f3ac9b3bd2002486a761ddab69bd9cc6ec57525f")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaysanPwa.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaysanPwa.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
