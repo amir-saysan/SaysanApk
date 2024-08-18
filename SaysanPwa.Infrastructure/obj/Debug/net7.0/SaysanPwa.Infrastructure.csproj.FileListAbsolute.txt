@@ -158,4 +158,8 @@ E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\refint\SaysanPwa.Infrastructure.dll
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.pdb
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\ref\SaysanPwa.Infrastructure.dll
+<<<<<<< HEAD
 D:\Saysan Ap\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+=======
+D:\vs\SaysanApk\SaysanPwa.Infrastructure\obj\Debug\net7.0\SaysanPwa.Infrastructure.sourcelink.json
+>>>>>>> 3750bd7 (AlterAmir)

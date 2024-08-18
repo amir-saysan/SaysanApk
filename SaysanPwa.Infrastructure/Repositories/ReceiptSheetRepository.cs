@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using SaysanPwa.Domain.AggregateModels.Factor;
 using SaysanPwa.Domain.AggregateModels.PartnerAggregate;
 using SaysanPwa.Domain.AggregateModels.ReceiptSheetAggregate;
+using SaysanPwa.Domain.AggregateModels.UserAggregate;
 using SaysanPwa.Domain.SeedWorker;
 using SqlServerWrapper.Wrapper.DatabaseManager;
 using System.Data;
@@ -31,6 +32,7 @@ public class ReceiptSheetRepository : IReceiptSheetRepository
             SqlTransaction transaction = connection.BeginTransaction();
             try
             {
+                //string Yearr = User.FindFirstValue("FiscalYearBeginDate");
                 if (int.Parse(tbl_DA.Dt_DA.Substring(0,4))!=1403)
                 {
                     return new(false, false, new List<string> { "!تاریخ دریافت نامعتبر می باشد" });
@@ -55,11 +57,11 @@ public class ReceiptSheetRepository : IReceiptSheetRepository
                 else
                     J_DA = J_DA_K + J_DA_H + J_DA_Chek + tbl_DA.M_to_S;
 
-                Console.WriteLine("J_DA:"+J_DA.ToString());
-                Console.WriteLine("J_DA_K:"+J_DA_K.ToString());
-                Console.WriteLine("J_DA_H:"+J_DA_H.ToString());
-                Console.WriteLine("J_DA_Chek:"+J_DA_Chek.ToString());
-                Console.WriteLine("tbl_DA.M_to_S:"+tbl_DA.M_to_S.ToString());
+                //Console.WriteLine("J_DA:"+J_DA.ToString());
+                //Console.WriteLine("J_DA_K:"+J_DA_K.ToString());
+                //Console.WriteLine("J_DA_H:"+J_DA_H.ToString());
+                //Console.WriteLine("J_DA_Chek:"+J_DA_Chek.ToString());
+                //Console.WriteLine("tbl_DA.M_to_S:"+tbl_DA.M_to_S.ToString());
 
                 #region Fetching ID_tbl_DA
                 using (SqlCommand command = new("Apk_Proc_Create_ID_tbl_DA", connection))

@@ -21,7 +21,6 @@ public class AddReceiptSheetCommandHandler : IRequestHandler<AddReceiptSheetComm
 
     public async Task<SysResult<bool>> Handle(AddReceiptSheetCommand request, CancellationToken cancellationToken)
     {
-
         return await _repository.AddReceiptSheet(new()
         {
             ID_tbl_TarafHesab = request.ReceiptSheetBaseDto.PartnerId,
@@ -59,6 +58,5 @@ public class AddReceiptSheetCommandHandler : IRequestHandler<AddReceiptSheetComm
             Traction_Nu = s.TransactionSeries,
             DC_DA_K = s.Description
         }).ToList());
-
     }
 }

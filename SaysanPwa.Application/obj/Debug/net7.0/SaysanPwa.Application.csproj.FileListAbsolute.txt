@@ -140,4 +140,8 @@ E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Application\obj\Debug\net7.0\Sa
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Application\obj\Debug\net7.0\refint\SaysanPwa.Application.dll
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Application\obj\Debug\net7.0\SaysanPwa.Application.pdb
 E:\mp\project\Saysan\Github8\SaysanApk\SaysanPwa.Application\obj\Debug\net7.0\ref\SaysanPwa.Application.dll
+<<<<<<< HEAD
 D:\Saysan Ap\SaysanApk\SaysanPwa.Application\obj\Debug\net7.0\SaysanPwa.Application.sourcelink.json
+=======
+D:\vs\SaysanApk\SaysanPwa.Application\obj\Debug\net7.0\SaysanPwa.Application.sourcelink.json
+>>>>>>> 3750bd7 (AlterAmir)

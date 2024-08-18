@@ -19,7 +19,6 @@ namespace SaysanPwa.Domain.AggregateModels.ReceiptSheetAggregate
 		public long ID_tbl_TarafHesab { get; set; }
 		public string Name_TarafHesab { get; set; }
 		public long ID_tbl_DA { get; set; } //آیدی دریافت 
-		//public string ID_tbl_DA { get; set; } //شماره دریافت 
 		public string Dt_DA { get; set; } //تاریخ 
 		public decimal J_DA { get; set; } //جمع دریافت 
 		public decimal J_DA_Ch { get; set; } //جمع دریافت چک 
@@ -31,7 +30,12 @@ namespace SaysanPwa.Domain.AggregateModels.ReceiptSheetAggregate
 		public string Typee { get; set; }
 		public string Number_Hesab { get; set; }
 		public decimal J_DA_AZ { get; set; }
+<<<<<<< HEAD
 		public string Desc_S1 { get; set; }
+=======
+		public decimal Desc_S1 { get; set; }
+		public decimal J_S1 { get; set; }
+>>>>>>> 3750bd7 (AlterAmir)
 
 		//public string tbl_TarafHesab.Name_TarafHesab { get; set; } //طرفحساب دریافت 
 		//public string tbl_Users.Username { get; set; } //نام کاربر ثبت کننده سیتم 

@@ -47,14 +47,14 @@
 		<div class="accordion-item">
 			<h2 class="accordion-header">
 				<button class="accordion-button collapsed" onclick="toggleDisplay('panelsStayOpen-collapse-@p.ID_tbl_DA')" type="button">
-					شماره فاکتور : @p.ID_tbl_DA- طرف حساب  : @p.Name_TarafHesab
+					شماره دریافت : @p.ID_tbl_DA- طرف حساب  : @p.Name_TarafHesab
 				</button>
 			</h2>
 			<div id="panelsStayOpen-collapse-@p.ID_tbl_DA" class="accordion-collapse collapse">
 				<div class="accordion-body">
 					<table class="table table-bordered">
 						<tbody>
-							<tr><th>شماره فاکتور : </th><td>@p.ID_tbl_DA</td></tr>
+							<tr><th>شماره دریافت : </th><td>@p.ID_tbl_DA</td></tr>
 							<tr><th>تاریخ : </th><td>@p.Dt_DA</td></tr>
 							<tr><th>مبلغ: </th><td>@p.J_DA.ToString("n0")</td></tr>
 							<tr><th> شرح   : </th><td>@p.Dc_DA</td></tr>

@@ -172,8 +172,8 @@
                                         <td>@item.ID_tbl_DA</td>
                                         <td>@item.Dt_DA</td>
                                         <td>@item.Number_Hesab</td>
-                                        <td></td>
-                                        <td>@item.J_DA.ToString("n0")</td>
+                                        <td>@item.Desc_S1</td>
+                                        <td>@item.J_S1.ToString("n0")</td>
                                     </tr>
                                     RowCount = RowCount + 1;
                                 }
@@ -197,8 +197,8 @@
                                         <td>@item.ID_tbl_DA</td>
                                         <td>@item.Dt_DA</td>
                                         <td> @item.Number_Hesab </td>
-                                        <td></td>
-                                        <td>@item.J_DA.ToString("n0")</td>
+                                        <td>@item.Desc_S1</td>
+                                        <td>@item.J_S1.ToString("n0")</td>
                                     </tr>
                                     RowCount = RowCount + 1;
                                 }
@@ -221,8 +221,8 @@
                                         <td>@item.ID_tbl_DA</td>
                                         <td>@item.Dt_DA</td>
                                         <td> @item.Number_Hesab </td>
-                                        <td></td>
-                                        <td>@item.J_DA.ToString("n0")</td>
+                                        <td>@item.Desc_S1</td>
+                                        <td>@item.J_S1.ToString("n0")</td>
                                     </tr>
                                     RowCount = RowCount + 1;
                                 }
@@ -245,8 +245,8 @@
                                         <td>@item.ID_tbl_DA</td>
                                         <td>@item.Dt_DA</td>
                                         <td> @item.Number_Hesab </td>
-                                        <td></td>
-                                        <td>@item.J_DA.ToString("n0")</td>
+                                        <td>@item.Desc_S1</td>
+                                        <td>@item.J_S1.ToString("n0")</td>
                                     </tr>
                                     RowCount = RowCount + 1;
                                 }
@@ -271,8 +271,8 @@
                                         <td>@item.ID_tbl_DA</td>
                                         <td>@item.Dt_DA</td>
                                         <td> @item.Number_Hesab </td>
-                                        <td></td>
-                                        <td>@item.J_DA.ToString("n0")</td>
+                                        <td>@item.Desc_S1</td>
+                                        <td>@item.J_S1.ToString("n0")</td>
                                     </tr>
                                     RowCount = RowCount + 1;
                                 }
@@ -283,12 +283,10 @@
                     @{
                         decimal Sum = 0;
                         foreach (var item in Model.PageResult.Result)
-                        {
-                            Sum = Sum + item.J_DA;
-                        }
+                            Sum = item.J_DA;
                     }
                     <tr>
-                        <td colspan="4"><b> جمع دریافت به حروف: </b><span>  </span></td>
+                        <td colspan="4"><b></b><span>  </span></td>@*  جمع دریافت به حروف: *@
                         <td colspan="2"><b> جمع دریافت: </b><span> @Sum.ToString("n0") </span></td>
                     </tr>
                 </tbody>
